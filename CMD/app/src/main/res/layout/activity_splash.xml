@@ -11,7 +11,7 @@
         android:id="@+id/imageC"
         android:layout_width="229dp"
         android:layout_height="304dp"
-        android:src="@drawable/cmd"
+        android:src="@drawable/cmdblack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
