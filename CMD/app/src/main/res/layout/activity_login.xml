@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/ivCmd"
+        android:layout_width="88dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="125dp"
+        android:src="@drawable/cmdwhite"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etId"
+        android:layout_width="300dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/etradius"
+        android:hint="     아이디"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivCmd" />
+
+    <EditText
+        android:id="@+id/etPw"
+        android:layout_width="300dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/etradius"
+        android:hint="     비밀번호"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etId" />
+
+    <Button
+        android:id="@+id/btLogin"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="190dp"
+        android:background="@color/white"
+        android:text="로그인"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계정이 없다면 새로운 계정을 만드세요"
+        android:textColor=""
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

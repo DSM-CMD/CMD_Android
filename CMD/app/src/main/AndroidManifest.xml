@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CMD">
         <activity
-            android:name=".fragment.TimeTableFragment"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
