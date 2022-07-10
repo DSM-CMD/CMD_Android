@@ -24,4 +24,6 @@ class TimeTableFragment : Fragment() {
         val view = inflater.inflate(R.layout.activity_time_table_fragment, container, false)
         return view
     }
+
+
 }

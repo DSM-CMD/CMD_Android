@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
-    tools:context=".LoginActivity">
+    tools:context=".Activity.LoginActivity">
 
     <ImageView
         android:id="@+id/ivCmd"
-        android:layout_width="88dp"
-        android:layout_height="81dp"
-        android:layout_marginTop="125dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/cmdwhite"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,9 +21,9 @@
         android:id="@+id/etId"
         android:layout_width="300dp"
         android:layout_height="54dp"
-        android:layout_marginTop="88dp"
         android:background="@drawable/etradius"
         android:hint="     아이디"
+        android:layout_marginTop="44dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivCmd" />
@@ -32,29 +32,38 @@
         android:id="@+id/etPw"
         android:layout_width="300dp"
         android:layout_height="54dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/etradius"
         android:hint="     비밀번호"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etId" />
 
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="계정이 없으시다면? 회원가입 하기"
+        android:textColor="@color/white"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etPw"/>
+
     <Button
         android:id="@+id/btLogin"
         android:layout_width="300dp"
-        android:layout_height="65dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="190dp"
-        android:background="@color/white"
+        android:background="@drawable/buttonradius"
         android:text="로그인"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        android:layout_marginTop="44dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRegister"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="계정이 없다면 새로운 계정을 만드세요"
-        android:textColor=""
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

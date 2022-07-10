@@ -1,10 +1,12 @@
-package com.tmdhoon.cmd;
+package com.tmdhoon.cmd.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.tmdhoon.cmd.R;
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -1,14 +1,12 @@
-package com.tmdhoon.cmd
+package com.tmdhoon.cmd.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.tmdhoon.cmd.R
+import com.tmdhoon.cmd.RecyclerVeiw.ViewPagerAdapter
 import com.tmdhoon.cmd.databinding.ActivityMainBinding
-import com.tmdhoon.cmd.fragment.NoticeBoardFragment
-import com.tmdhoon.cmd.fragment.StudentInfoFragment
-import com.tmdhoon.cmd.fragment.UserInfoFragment
-import com.tmdhoon.cmd.fragment.TimeTableFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,12 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomnav.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        supportFragmentManager.beginTransaction().replace(R.id.framelayout, TimeTableFragment())
-//            .commit()
-//    }
 
     private val onBottomNavigationSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         when (it.itemId) {
