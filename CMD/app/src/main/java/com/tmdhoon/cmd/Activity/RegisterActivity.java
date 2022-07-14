@@ -12,7 +12,6 @@ import com.tmdhoon.cmd.Api.ApiProvider;
 import com.tmdhoon.cmd.Api.ServerApi;
 import com.tmdhoon.cmd.R;
 import com.tmdhoon.cmd.Request.RegisterRequest;
-import com.tmdhoon.cmd.Response.RegisterResponse;
 import com.tmdhoon.cmd.databinding.ActivityRegisterBinding;
 
 import retrofit2.Call;
@@ -22,7 +21,7 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegisterBinding binding;
-    private Editable secretKey;
+    private String secretKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String number = binding.etnumber.getText().toString();
                 String userId = binding.etuserId.getText().toString();
                 String password = binding.etpassword.getText().toString();
-                secretKey = binding.etsecretKey.getText();
+                String secretKey = binding.etsecretKey.getText().toString();
 
                 if(username == null)
                     Toast.makeText(RegisterActivity.this, "이름을 입력해주세요", Toast.LENGTH_SHORT).show();
@@ -83,11 +82,28 @@ public class RegisterActivity extends AppCompatActivity {
         String number = binding.etnumber.getText().toString();
         String userId = binding.etuserId.getText().toString();
         String password = binding.etpassword.getText().toString();
-        secretKey = binding.etsecretKey.getText();
+        String secretKey = binding.etsecretKey.getText().toString();
 
         RegisterRequest registerRequest = new RegisterRequest(username, number, userId, password);
 
         ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
+
+        serverApi.register(secretKey, registerRequest).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.code() == 200){
+                    Toast.makeText(RegisterActivity.this, "회원가입 되었습니다! 로그인 후 이용해주세요", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(RegisterActivity.this, "onFailure", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
 
