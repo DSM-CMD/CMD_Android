@@ -44,9 +44,18 @@ public class LobbyActivity extends AppCompatActivity {
         binding.pager.setAdapter(pagerAdapter);
 
 
+
         FragmentTransaction transaction;
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.framelayout, timetableFragment).commitNowAllowingStateLoss();
+
+        binding.pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                binding.bottomNavigationView.getMenu().getItem(position).setChecked(true);
+            }
+        });
+
 
         binding.bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
@@ -56,16 +65,16 @@ public class LobbyActivity extends AppCompatActivity {
 
                 switch (id){
                     case R.id.timetable:
-                        transaction.replace(R.id.framelayout, timetableFragment).commitAllowingStateLoss();
+                         binding.pager.setCurrentItem(0);
                         break;
                     case R.id.studentinfo:
-                        transaction.replace(R.id.framelayout, studentInfoFragment).commitAllowingStateLoss();
+                         binding.pager.setCurrentItem(1);
                         break;
                     case R.id.noticeboard:
-                        transaction.replace(R.id.framelayout, noticeBoardFragment).commitAllowingStateLoss();
+                         binding.pager.setCurrentItem(2);
                         break;
                     case R.id.mypage:
-                        transaction.replace(R.id.framelayout, mypageFragment).commitAllowingStateLoss();
+                         binding.pager.setCurrentItem(3);
                         break;
 
                 }
