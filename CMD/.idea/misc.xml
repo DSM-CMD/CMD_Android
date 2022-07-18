@@ -3,26 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/DSM2022/AndroidStudioProjects/CMD/app/src/main/res/layout/activity_main.xml" value="0.2390625" />
-        <entry key="..\:/Users/DSM2022/AndroidStudioProjects/CMD/app/src/main/res/layout/activity_splash.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/buttonradius.xml" value="0.211" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/color.xml" value="0.1285" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/edittextbackground.xml" value="0.1" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/etradius.xml" value="0.211" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_mypage_fragment.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_notice_board_fragment.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_post2_fragment.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_register.xml" value="0.2" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_splash.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_student_info_fragment.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_student_information_fragment.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_time_table_fragment.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/fragment_notice_board.xml" value="0.20820863616930313" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/timetable_list.xml" value="0.2" />
-        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/menu/bottomnav_item.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/ReCMD/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/ReCMD/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/ReCMD/app/src/main/res/layout/activity_signin.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/ReCMD/app/src/main/res/layout/activity_signup.xml" value="0.176" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/drawable/btradius.xml" value="0.2015" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/drawable/etradius.xml" value="0.2015" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/drawable/selected.xml" value="0.2015" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/activity_lobby.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/fragment_mypage.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/fragment_notice_board.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/fragment_studentinfo.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/fragment_timetable.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/menu/bottomnav.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>
