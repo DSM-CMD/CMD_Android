@@ -12,12 +12,12 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.cmd.R;
-import com.example.cmd.databinding.ActivityLobbyBinding;
 import com.example.cmd.Fragment.MypageFragment;
 import com.example.cmd.Fragment.NoticeBoardFragment;
 import com.example.cmd.Fragment.StudentInfoFragment;
 import com.example.cmd.Fragment.TimetableFragment;
+import com.example.cmd.R;
+import com.example.cmd.databinding.ActivityLobbyBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LobbyActivity extends AppCompatActivity {

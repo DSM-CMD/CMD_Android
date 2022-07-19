@@ -1,24 +1,12 @@
 package com.example.cmd.Request;
 
 public class SignupRequest {
-    String username;
-    String number;
     String userId;
     String password;
 
-    public SignupRequest(String username, String number, String userId, String password) {
-        this.username = username;
-        this.number = number;
+    public SignupRequest(String userId, String password) {
         this.userId = userId;
         this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getNumber() {
-        return number;
     }
 
     public String getUserId() {

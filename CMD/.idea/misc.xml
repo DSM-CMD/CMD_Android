@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_lobby.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_signin.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_signup.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/fragment_timetable.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/list_timetable.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/ReCMD/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/ReCMD/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/ReCMD/app/src/main/res/layout/activity_signin.xml" value="0.25364583333333335" />
