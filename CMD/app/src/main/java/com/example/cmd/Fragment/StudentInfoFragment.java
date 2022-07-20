@@ -17,6 +17,8 @@ public class StudentInfoFragment extends Fragment {
 
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_studentinfo, container, false);
 
+
+
         return rootView;
     }
 }

@@ -24,8 +24,7 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     private ActivitySigninBinding binding;
-    
-    private String accessToken;
+    public static String accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +39,6 @@ public class SignInActivity extends AppCompatActivity {
         calendar.setTime(currentDate);
 
         binding.etId.setSelection(binding.etId.getText().length());
-
-        binding.btWeek.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.tvWeek.setText(calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US));
-            }
-        });
 
         binding.tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +86,6 @@ public class SignInActivity extends AppCompatActivity {
 
                     Toast.makeText(SignInActivity.this, "로그인에 성공했습니다!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);
-
                     finish();
                     startActivity(intent);
 
@@ -105,7 +96,6 @@ public class SignInActivity extends AppCompatActivity {
             public void onFailure(Call<SignInResponse> call, Throwable t) {
                 Toast.makeText(SignInActivity.this, t + "", Toast.LENGTH_SHORT).show();
                 Toast.makeText(SignInActivity.this, "길근우 서버 내놔", Toast.LENGTH_SHORT).show();
-                binding.tverror.setText(t.getMessage());
             }
         });
     }
