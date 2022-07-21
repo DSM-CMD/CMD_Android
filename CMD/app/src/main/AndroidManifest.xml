@@ -8,12 +8,12 @@
         android:allowBackup="true"
         android:icon="@drawable/applogo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/cmdwhite"
+        android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.CMD"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Main.LobbyActivity"
+            android:name=".Main.SplashActivity"
             android:exported="false" />
         <activity
             android:name=".Main.SignupActivity"
@@ -22,7 +22,7 @@
             android:name=".Main.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".Main.SplashActivity"
+            android:name=".Main.LobbyActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

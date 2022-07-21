@@ -31,7 +31,9 @@
            android:id="@+id/etId"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
-           android:hint="아이디"/>
+           android:hint="아이디"
+           android:maxLines="1"
+           android:singleLine="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +51,9 @@
             android:id="@+id/etPw"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="비밀번호"/>
+            android:hint="비밀번호"
+            android:maxLines="1"
+            android:singleLine="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
