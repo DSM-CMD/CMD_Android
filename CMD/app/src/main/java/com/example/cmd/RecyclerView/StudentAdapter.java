@@ -3,29 +3,28 @@ package com.example.cmd.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmd.R;
-import com.example.cmd.StudentInfo;
+import com.example.cmd.Response.StudentInfoResponse;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
 
-    private ArrayList<StudentInfo> arrayList;
+    private List<StudentInfoResponse> list;
 
-    public StudentAdapter(ArrayList<StudentInfo> arrayList) {
-        this.arrayList = arrayList;
+    public StudentAdapter(List<StudentInfoResponse> list) {
+        this.list = list;
     }
 
     public class StudentViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvname;
-        public TextView tvname1;
-        public TextView tvname2;
 
         public StudentViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -46,12 +45,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
 
     @Override
     public void onBindViewHolder(@NonNull StudentAdapter.StudentViewHolder holder, int position) {
-        holder.tvname.setText(arrayList.get(position).getName());
+        holder.tvname.setText(list.get(position).getUsername());
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return list.size();
     }
 
 

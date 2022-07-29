@@ -3,6 +3,7 @@ package com.example.cmd.Main;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -26,6 +27,9 @@ public class SignInActivity extends AppCompatActivity {
     private ActivitySigninBinding binding;
     public static String accessToken;
 
+    public static SharedPreferences preferences;
+    public static SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,55 @@ public class SignInActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(currentDate);
 
+        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        editor = preferences.edit();
+
+        if(preferences.getInt("Check", 0) == 1){
+            binding.cbautlLogin.setChecked(true);
+            binding.etId.setText(preferences.getString("Id", ""));
+            binding.etPw.setText(preferences.getString("Pw", ""));
+
+            String userId = binding.etId.getText().toString();
+            String userPw = binding.etPw.getText().toString();
+
+            SignInRequest signInRequest = new SignInRequest(userId, userPw);
+
+            ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
+
+            serverApi.signin(signInRequest).enqueue(new Callback<SignInResponse>() {
+                @Override
+                public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
+                    if(response.isSuccessful()){
+
+                        Toast.makeText(SignInActivity.this, "로그인에 성공했습니다!", Toast.LENGTH_SHORT).show();
+
+                        accessToken = response.body().getAccessToken();
+
+
+                        if(binding.cbautlLogin.isChecked()){
+                            editor.putInt("Check", 1).commit();
+                            editor.putString("Id", binding.etId.getText().toString()).commit();
+                            editor.putString("Pw", binding.etPw.getText().toString()).commit();
+                        }
+                        
+                        Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<SignInResponse> call, Throwable t) {
+
+                }
+            });
+
+        }else binding.cbautlLogin.setChecked(false);
+
+        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        editor = preferences.edit();
+
         binding.etId.setSelection(binding.etId.getText().length());
 
         binding.tvRegister.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +98,6 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -83,6 +135,13 @@ public class SignInActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
 
                     accessToken = response.body().getAccessToken();
+
+                    if(binding.cbautlLogin.isChecked()){
+                        editor.putInt("Check", 1).commit();
+                        editor.putString("Id", binding.etId.getText().toString()).commit();
+                        editor.putString("Pw", binding.etPw.getText().toString()).commit();
+                    }
+
 
                     Toast.makeText(SignInActivity.this, "로그인에 성공했습니다!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);

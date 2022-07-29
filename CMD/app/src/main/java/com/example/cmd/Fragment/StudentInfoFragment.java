@@ -1,28 +1,37 @@
 package com.example.cmd.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cmd.Api.ApiProvider;
+import com.example.cmd.Api.ServerApi;
+import com.example.cmd.Main.SignInActivity;
 import com.example.cmd.R;
 import com.example.cmd.RecyclerView.StudentAdapter;
-import com.example.cmd.StudentInfo;
+import com.example.cmd.Response.StudentInfoResponse;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StudentInfoFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private StudentAdapter studentAdapter;
-    ArrayList<StudentInfo> arrayList;
+    List<StudentInfoResponse> list;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,41 +39,37 @@ public class StudentInfoFragment extends Fragment {
 
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_studentinfo, container, false);
 
-        arrayList = new ArrayList<>();
-
+        list = new ArrayList<>();
         recyclerView = rootView.findViewById(R.id.studentrecyclerview);
-
-        gridLayoutManager = new GridLayoutManager(getActivity(), 3);
-
+        gridLayoutManager= new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        studentAdapter = new StudentAdapter(arrayList);
+        studentAdapter = new StudentAdapter(list);
 
         recyclerView.setAdapter(studentAdapter);
 
-        add();
+        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
+
+        Log.e("Test", "StudentInfoFragment");
+
+        serverApi.studentinfo(SignInActivity.accessToken).enqueue(new Callback<List<StudentInfoResponse>>() {
+            @Override
+            public void onResponse(Call<List<StudentInfoResponse>> call, Response<List<StudentInfoResponse>> response) {
+                if(response.isSuccessful()){
+                    Log.e("Test", "onResponse");
+                    list.addAll(response.body());
+                    studentAdapter.notifyDataSetChanged();
+                    Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<StudentInfoResponse>> call, Throwable t) {
+                Log.e("Test", "onFailure");
+                Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return rootView;
-    }
-
-    public void add(){
-        arrayList.add(new StudentInfo("강용수"));
-        arrayList.add(new StudentInfo("강지인"));
-        arrayList.add(new StudentInfo("길근우"));
-        arrayList.add(new StudentInfo("김민채"));
-        arrayList.add(new StudentInfo("김은오"));
-        arrayList.add(new StudentInfo("김정현"));
-        arrayList.add(new StudentInfo("김주원"));
-        arrayList.add(new StudentInfo("김현민"));
-        arrayList.add(new StudentInfo("마재영"));
-        arrayList.add(new StudentInfo("유나현"));
-        arrayList.add(new StudentInfo("유현담"));
-        arrayList.add(new StudentInfo("NULL"));
-        arrayList.add(new StudentInfo("정승훈"));
-        arrayList.add(new StudentInfo("정지관"));
-        arrayList.add(new StudentInfo("조문성"));
-        arrayList.add(new StudentInfo("최하은"));
-        arrayList.add(new StudentInfo("한예슬"));
-        arrayList.add(new StudentInfo("홍승재"));
     }
 }

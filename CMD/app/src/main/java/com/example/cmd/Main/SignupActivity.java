@@ -3,14 +3,19 @@ package com.example.cmd.Main;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
-import com.example.cmd.databinding.ActivitySignupBinding;
 import com.example.cmd.Request.SignupRequest;
+import com.example.cmd.databinding.ActivitySignupBinding;
+
+import java.util.WeakHashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +32,26 @@ public class SignupActivity extends AppCompatActivity {
         binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.etregisterId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                binding.tvidCount.setText(binding.etregisterId.getText().length() + "/12");
+                if(binding.etregisterId.getText().length() == 12){
+                    binding.tvidCount.setTextColor(Color.RED);
+                }else binding.tvidCount.setTextColor(Color.BLACK);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         binding.btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,11 +65,18 @@ public class SignupActivity extends AppCompatActivity {
                 else{
                     signUP();
                 }
-
             }
-
-
         });
+
+        binding.tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     private void signUP(){

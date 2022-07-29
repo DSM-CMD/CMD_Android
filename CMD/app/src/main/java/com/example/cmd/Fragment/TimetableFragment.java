@@ -1,14 +1,9 @@
 
 package com.example.cmd.Fragment;
 
-import android.graphics.ImageDecoder;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,16 +15,8 @@ import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Main.SignInActivity;
 import com.example.cmd.R;
 import com.example.cmd.Response.TimetableResponse;
-import com.example.cmd.databinding.FragmentTimetableBinding;
-import com.google.gson.annotations.SerializedName;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;

@@ -32,7 +32,16 @@
         <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/fragment_studentinfo.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/fragment_timetable.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/menu/bottomnav.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_signin.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_lobby.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_signin.xml" value="0.5" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_signup.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_mypage.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_notice_board.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_studentinfo.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_timetable.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/list_notice.xml" value="0.33" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/list_student.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/liststudent.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>

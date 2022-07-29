@@ -2,7 +2,9 @@ package com.example.cmd.Api;
 
 import com.example.cmd.Request.SignInRequest;
 import com.example.cmd.Request.SignupRequest;
+import com.example.cmd.Response.NoticeResponse;
 import com.example.cmd.Response.SignInResponse;
+import com.example.cmd.Response.StudentInfoResponse;
 import com.example.cmd.Response.TimetableResponse;
 
 import java.util.List;
@@ -29,10 +31,17 @@ public interface ServerApi {
 
     @GET("user/timetable/{day}")
     Call<TimetableResponse> timetable(
-      @Header("Authorization") String accessToken,
-      @Path("day") String day
+        @Header("Authorization") String accessToken,
+        @Path("day") String day
     );
 
+    @GET("user/info")
+    Call<List<StudentInfoResponse>> studentinfo(
+        @Header("Authorization") String accessToken
+    );
 
-
+    @GET("user/noticeBoard")
+    Call<List<NoticeResponse>> notice(
+        @Header("Authorization") String accessToken
+    );
 }

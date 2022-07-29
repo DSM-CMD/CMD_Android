@@ -13,7 +13,7 @@
         android:theme="@style/Theme.CMD"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Main.SplashActivity"
+            android:name=".Main.SignInActivity"
             android:exported="false" />
         <activity
             android:name=".Main.SignupActivity"
@@ -22,7 +22,7 @@
             android:name=".Main.LobbyActivity"
             android:exported="false" />
         <activity
-            android:name=".Main.SignInActivity"
+            android:name=".Main.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
