@@ -39,8 +39,11 @@ public class NoticeBoardFragment extends Fragment {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_notice_board, container, false);
 
         list = new ArrayList<>();
+
         recyclerView = rootView.findViewById(R.id.noticerecyclerview);
+
         linearLayoutManager = new LinearLayoutManager(getActivity());
+
         recyclerView.setLayoutManager(linearLayoutManager);
 
         noticeAdapter = new NoticeAdapter(list);
