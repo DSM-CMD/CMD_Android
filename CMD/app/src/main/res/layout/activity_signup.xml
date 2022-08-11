@@ -7,89 +7,113 @@
     tools:context=".Main.SignInActivity"
     android:background="@color/lightblack">
 
-    <ImageView
-        android:id="@+id/ivcmdBlack"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@drawable/cmdwhite"
-        android:layout_marginTop="64dp"
+    <TextView
+        android:id="@+id/tvregister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="50sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/notosans"
+        android:layout_marginTop="72dp"
+        android:layout_marginLeft="48dp"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+        android:id="@+id/etregisterId"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:hint="아이디"
+        android:textColor="@color/white"
+        android:textColorHint="#ABABAB"
+        android:backgroundTint="#ABABAB"
+        android:maxLines="1"
+        android:maxLength="12"
+        android:singleLine="true"
+        android:layout_marginTop="72dp"
+        app:layout_constraintTop_toBottomOf="@id/tvregister"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutregisterId"
-        android:layout_width="300dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="72dp"
-        android:textColorHint="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivcmdBlack">
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etregisterId"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="아이디"
-            android:maxLines="1"
-            android:maxLength="12"
-            android:singleLine="true"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tvidCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0/12"
-        android:textColor="@color/black"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/layoutregisterId"
-        app:layout_constraintEnd_toEndOf="@+id/layoutregisterId" />
+        android:text="0/12"
+        android:textColor="#ABABAB"
+        app:layout_constraintRight_toRightOf="@id/etregisterId"
+        app:layout_constraintTop_toBottomOf="@id/etregisterId"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutregisterPw"
-        android:layout_width="300dp"
-        android:layout_height="54dp"
-        android:textColorHint="@color/black"
+    <EditText
+        android:id="@+id/etregisterPw"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호"
+        android:textColor="@color/white"
+        android:textColorHint="#ABABAB"
+        android:backgroundTint="#ABABAB"
+        android:maxLines="1"
+        android:maxLength="24"
+        android:singleLine="true"
+        android:inputType="textPassword"
         android:layout_marginTop="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutregisterId">
+        app:layout_constraintTop_toBottomOf="@id/etregisterId"
+        app:layout_constraintLeft_toLeftOf="@id/etregisterId"
+        app:layout_constraintRight_toRightOf="@id/etregisterId"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etregisterPw"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="비밀번호"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:maxLength="24"
-            android:singleLine="true" />
+    <ImageView
+        android:id="@+id/ivvisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_baseline_visibility_off_24"
+        app:layout_constraintBottom_toBottomOf="@id/etregisterPw"
+        app:layout_constraintRight_toRightOf="@id/etregisterPw"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutregisterSecretKey"
-        android:layout_width="300dp"
-        android:layout_height="54dp"
+    <EditText
+        android:id="@+id/etregisterpwcheck"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호 확인"
+        android:textColor="@color/white"
+        android:textColorHint="#ABABAB"
+        android:backgroundTint="#ABABAB"
+        android:maxLines="1"
+        android:maxLength="24"
+        android:singleLine="true"
+        android:inputType="textPassword"
         android:layout_marginTop="16dp"
-        android:textColorHint="@color/black"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutregisterPw">
+        app:layout_constraintTop_toBottomOf="@id/etregisterPw"
+        app:layout_constraintLeft_toLeftOf="@id/etregisterPw"
+        app:layout_constraintRight_toRightOf="@id/etregisterPw"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etregistersecretKey"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="가입코드"
-            android:maxLines="1"
-            android:singleLine="true"/>
+    <ImageView
+        android:id="@+id/ivvisiblecheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_baseline_visibility_off_24"
+        app:layout_constraintBottom_toBottomOf="@id/etregisterpwcheck"
+        app:layout_constraintRight_toRightOf="@id/etregisterpwcheck"/>
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <EditText
+        android:id="@+id/etregistersecretKey"
+        android:layout_width="288dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ABABAB"
+        android:hint="가입코드"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="#ABABAB"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@id/etregisterpwcheck"
+        app:layout_constraintRight_toRightOf="@id/etregisterpwcheck"
+        app:layout_constraintTop_toBottomOf="@id/etregisterpwcheck"/>
 
     <Button
         android:id="@+id/btRegister"
@@ -99,10 +123,10 @@
         android:text="회원가입"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutregisterSecretKey"
+        android:layout_marginBottom="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvLogin"/>
 
     <TextView
         android:id="@+id/tvLogin"
@@ -110,9 +134,9 @@
         android:layout_height="wrap_content"
         android:text="계정이 있으시다면 로그인하세요"
         android:textColor="@color/white"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btRegister"
+        android:layout_marginBottom="64dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

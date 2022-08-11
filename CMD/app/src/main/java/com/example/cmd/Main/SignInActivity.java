@@ -59,9 +59,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
-        editor = preferences.edit();
-
         if(preferences.getInt("Check", 0) == 1){
             binding.cbautlLogin.setChecked(true);
             binding.etId.setText(preferences.getString("Id", ""));
@@ -167,8 +164,7 @@ public class SignInActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
-                Toast.makeText(SignInActivity.this, t + "", Toast.LENGTH_SHORT).show();
-                Toast.makeText(SignInActivity.this, "길근우 서버 내놔", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignInActivity.this, "Server is closed", Toast.LENGTH_SHORT).show();
             }
         });
     }
