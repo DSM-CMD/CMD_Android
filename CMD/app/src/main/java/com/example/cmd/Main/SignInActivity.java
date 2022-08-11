@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
+import com.example.cmd.R;
 import com.example.cmd.Request.SignInRequest;
 import com.example.cmd.Response.SignInResponse;
 import com.example.cmd.databinding.ActivitySigninBinding;
@@ -37,10 +39,25 @@ public class SignInActivity extends AppCompatActivity {
         binding = ActivitySigninBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Date currentDate = new Date();
+        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        editor = preferences.edit();
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(currentDate);
+        binding.ivvisible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(preferences.getBoolean("visible", false) == false) {
+                    binding.ivvisible.setImageResource(R.drawable.ic_baseline_visibility_24);
+                    binding.etPw.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
+                    binding.etPw.setSelection(binding.etPw.getText().length());
+                    editor.putBoolean("visible", true).commit();
+                }else if(preferences.getBoolean("visible", false) == true){
+                    binding.ivvisible.setImageResource(R.drawable.ic_baseline_visibility_off_24);
+                    binding.etPw.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    binding.etPw.setSelection(binding.etPw.getText().length());
+                    editor.putBoolean("visible", false).commit();
+                }
+            }
+        });
 
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
         editor = preferences.edit();
@@ -87,9 +104,6 @@ public class SignInActivity extends AppCompatActivity {
             });
 
         }else binding.cbautlLogin.setChecked(false);
-
-        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
-        editor = preferences.edit();
 
         binding.etId.setSelection(binding.etId.getText().length());
 
