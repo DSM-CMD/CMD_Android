@@ -15,6 +15,10 @@ import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Main.SignInActivity;
 import com.example.cmd.R;
 import com.example.cmd.Response.TimetableResponse;
+
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -25,6 +29,7 @@ import retrofit2.Response;
 
 public class TimetableFragment extends Fragment {
 
+    private TextView tvdate;
     private TextView period01;
     private TextView period02;
     private TextView period03;
@@ -42,9 +47,18 @@ public class TimetableFragment extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_timetable, container, false);
 
+        tvdate = rootView.findViewById(R.id.tvdate);
+
         Date currentDate = new Date();
 
         Calendar calendar = Calendar.getInstance();
+
+        SimpleDateFormat format = new SimpleDateFormat("MM월 dd일" + " " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일");
+
+        String format_time = format.format(calendar.getTime());
+
+        tvdate.setText(format_time);
+
         calendar.setTime(currentDate);
 
         period01 = rootView.findViewById(R.id.tvperiod01);
@@ -80,8 +94,7 @@ public class TimetableFragment extends Fragment {
 
             @Override
             public void onFailure(Call<TimetableResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), "실패", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
 
