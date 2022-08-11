@@ -50,23 +50,17 @@ public class StudentInfoFragment extends Fragment {
 
         ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
 
-        Log.e("Test", "StudentInfoFragment");
-
         serverApi.studentinfo(SignInActivity.accessToken).enqueue(new Callback<List<StudentInfoResponse>>() {
             @Override
             public void onResponse(Call<List<StudentInfoResponse>> call, Response<List<StudentInfoResponse>> response) {
                 if(response.isSuccessful()){
-                    Log.e("Test", "onResponse");
                     list.addAll(response.body());
                     studentAdapter.notifyDataSetChanged();
-                    Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<StudentInfoResponse>> call, Throwable t) {
-                Log.e("Test", "onFailure");
-                Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT).show();
             }
         });
 

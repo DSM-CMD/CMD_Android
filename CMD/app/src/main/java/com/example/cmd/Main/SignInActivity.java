@@ -116,12 +116,12 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                signinStart();
+                signinCheck();
             }
         });
     }
 
-    private void signinStart(){
+    private void signinCheck(){
         if(binding.etId.getText().length() == 0)
             Toast.makeText(SignInActivity.this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show();
         else if(binding.etPw.getText().length() == 0){

@@ -35,7 +35,7 @@ public interface ServerApi {
         @Path("day") String day
     );
 
-    @GET("user/info")
+    @GET("user/Info")
     Call<List<StudentInfoResponse>> studentinfo(
         @Header("Authorization") String accessToken
     );

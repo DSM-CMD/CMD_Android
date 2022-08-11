@@ -51,7 +51,7 @@ public class SignupActivity extends AppCompatActivity {
                 binding.tvidCount.setText(binding.etregisterId.getText().length() + "/12");
                 if(binding.etregisterId.getText().length() == 12){
                     binding.tvidCount.setTextColor(Color.RED);
-                }else binding.tvidCount.setTextColor(Color.BLACK);
+                }else binding.tvidCount.setTextColor(Color.parseColor("#ABABAB"));
             }
 
             @Override

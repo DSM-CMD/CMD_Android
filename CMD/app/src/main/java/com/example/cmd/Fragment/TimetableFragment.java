@@ -78,7 +78,6 @@ public class TimetableFragment extends Fragment {
             @Override
             public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(getActivity(), "성공", Toast.LENGTH_SHORT).show(); 
                     period01.setText(response.body().getPeriod1st());
                     period02.setText(response.body().getPeriod2nd());
                     period03.setText(response.body().getPeriod3th());

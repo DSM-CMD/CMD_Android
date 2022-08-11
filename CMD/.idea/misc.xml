@@ -32,18 +32,22 @@
         <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/fragment_studentinfo.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/layout/fragment_timetable.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/AndroidStudioProjects/CMD/app/src/main/res/menu/bottomnav.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/drawable/btradius.xml" value="0.233" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/drawable/etradius.xml" value="0.233" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/drawable/ic_baseline_visibility_24.xml" value="0.2415" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.2415" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/drawable/ic_eye.xml" value="0.1605" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_dialog.xml" value="0.33" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_lobby.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_signin.xml" value="0.33" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_signup.xml" value="0.33" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_splash.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_student_detail.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/activity_wating.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_mypage.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_notice_board.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_studentinfo.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_timetable.xml" value="0.33" />
+        <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/fragment_timetable.xml" value="0.4325437693099897" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/list_notice.xml" value="0.33" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/list_student.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/hks02/Desktop/Git/CMD/CMD/app/src/main/res/layout/liststudent.xml" value="0.36614583333333334" />

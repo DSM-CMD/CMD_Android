@@ -1,14 +1,16 @@
 package com.example.cmd.RecyclerView;
 
+import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cmd.Fragment.StudentInfoFragment;
+import com.example.cmd.Main.DialogActivity;
 import com.example.cmd.R;
 import com.example.cmd.Response.StudentInfoResponse;
 
@@ -45,6 +47,15 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
     @Override
     public void onBindViewHolder(@NonNull StudentAdapter.StudentViewHolder holder, int position) {
         holder.tvname.setText(list.get(position).getUsername());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog;
+                dialog = new Dialog(view.getContext());
+                dialog.setContentView(R.layout.activity_dialog);
+                dialog.show();
+            }
+        });
     }
 
     @Override
