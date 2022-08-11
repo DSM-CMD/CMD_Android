@@ -36,7 +36,7 @@ public class NoticeBoardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_notice_board, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_notice_board, container, false);
 
         list = new ArrayList<>();
 
@@ -52,20 +52,20 @@ public class NoticeBoardFragment extends Fragment {
 
         ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
 
-       serverApi.notice(SignInActivity.accessToken).enqueue(new Callback<List<NoticeResponse>>() {
-           @Override
-           public void onResponse(Call<List<NoticeResponse>> call, Response<List<NoticeResponse>> response) {
-               if(response.isSuccessful()){
-                   list.addAll(response.body());
-                   noticeAdapter.notifyDataSetChanged();
-               }
-           }
+        serverApi.notice(SignInActivity.accessToken).enqueue(new Callback<List<NoticeResponse>>() {
+            @Override
+            public void onResponse(Call<List<NoticeResponse>> call, Response<List<NoticeResponse>> response) {
+                if (response.isSuccessful()) {
+                    list.addAll(response.body());
+                    noticeAdapter.notifyDataSetChanged();
+                }
+            }
 
-           @Override
-           public void onFailure(Call<List<NoticeResponse>> call, Throwable t) {
+            @Override
+            public void onFailure(Call<List<NoticeResponse>> call, Throwable t) {
 
-           }
-       });
+            }
+        });
 
         return rootView;
     }
