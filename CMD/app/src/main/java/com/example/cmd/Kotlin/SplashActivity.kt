@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.cmd.Main.SplashActivity
-import com.example.cmd.Main.WatingActivity
 import com.example.cmd.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -19,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Handler().postDelayed({
-            val intent = Intent(this, WatingActivity::class.java)
+            val intent = Intent(this, WatingActivity2::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()

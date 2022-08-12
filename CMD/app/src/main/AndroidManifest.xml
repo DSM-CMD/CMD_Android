@@ -13,7 +13,10 @@
         android:theme="@style/Theme.CMD"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".WatingActivity"
+            android:name=".Kotlin.LobbyActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".Kotlin.WatingActivity2"
             android:exported="false" />
         <activity
             android:name=".Main.SplashActivity"
