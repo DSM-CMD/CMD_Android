@@ -24,10 +24,6 @@ public class LobbyActivity extends AppCompatActivity {
 
     private ActivityLobbyBinding binding;
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private TimetableFragment timetableFragment = new TimetableFragment();
-    private StudentInfoFragment studentInfoFragment = new StudentInfoFragment();
-    private NoticeBoardFragment noticeBoardFragment = new NoticeBoardFragment();
-    private MypageFragment mypageFragment = new MypageFragment();
 
     private FragmentStateAdapter pagerAdapter;
 
@@ -42,8 +38,6 @@ public class LobbyActivity extends AppCompatActivity {
 
         pagerAdapter = new ScreeSlidePagerAdapter(this);
         binding.pager.setAdapter(pagerAdapter);
-
-
 
         FragmentTransaction transaction;
         transaction = fragmentManager.beginTransaction();

@@ -1,10 +1,8 @@
-package com.example.cmd.Kotlin
+package com.example.cmd.Kotlin.Main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
 import com.example.cmd.databinding.ActivityWatingBinding
 
 class WatingActivity2 : AppCompatActivity() {
