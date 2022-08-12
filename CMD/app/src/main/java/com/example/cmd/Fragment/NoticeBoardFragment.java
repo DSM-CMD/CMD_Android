@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +16,6 @@ import com.example.cmd.Main.SignInActivity;
 import com.example.cmd.R;
 import com.example.cmd.RecyclerView.NoticeAdapter;
 import com.example.cmd.Response.NoticeResponse;
-import com.example.cmd.Response.StudentInfoResponse;
 
 import java.util.ArrayList;
 import java.util.List;
