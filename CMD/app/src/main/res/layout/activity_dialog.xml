@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="316dp"
-        android:layout_height="688dp"
+        android:layout_height="752dp"
         android:backgroundTint="#606060"
         app:cardCornerRadius="12dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -185,7 +185,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="240dp"
-                android:layout_height="160dp"
+                android:layout_height="216dp"
                 android:backgroundTint="#535353"
                 app:cardCornerRadius="12dp"
                 app:layout_constraintTop_toBottomOf="@id/textview7"
@@ -247,6 +247,160 @@
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintRight_toRightOf="parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position5"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="4dp"
+                        android:backgroundTint="#585858"
+                        app:layout_constraintTop_toBottomOf="@id/position1"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position6"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_marginLeft="10dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toTopOf="@id/position5"
+                        app:layout_constraintLeft_toRightOf="@id/position5"
+                        app:layout_constraintRight_toRightOf="@id/guideline"
+                        app:layout_constraintBottom_toBottomOf="@id/position5" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position7"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_marginRight="10dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toTopOf="@id/position8"
+                        app:layout_constraintLeft_toLeftOf="@id/guideline"
+                        app:layout_constraintRight_toLeftOf="@id/position8"
+                        app:layout_constraintBottom_toBottomOf="@id/position8"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position8"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/position4"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position9"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="4dp"
+                        android:backgroundTint="#585858"
+                        app:layout_constraintTop_toBottomOf="@id/position5"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position10"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_marginLeft="10dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toTopOf="@id/position9"
+                        app:layout_constraintLeft_toRightOf="@id/position9"
+                        app:layout_constraintRight_toRightOf="@id/guideline"
+                        app:layout_constraintBottom_toBottomOf="@id/position9" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position11"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_marginRight="10dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toTopOf="@id/position12"
+                        app:layout_constraintLeft_toLeftOf="@id/guideline"
+                        app:layout_constraintRight_toLeftOf="@id/position12"
+                        app:layout_constraintBottom_toBottomOf="@id/position12"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position12"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/position8"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position13"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="4dp"
+                        android:backgroundTint="#585858"
+                        app:layout_constraintTop_toBottomOf="@id/position9"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position14"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_marginLeft="10dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toTopOf="@id/position13"
+                        app:layout_constraintLeft_toRightOf="@id/position13"
+                        app:layout_constraintRight_toRightOf="@id/guideline"
+                        app:layout_constraintBottom_toBottomOf="@id/position13" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position15"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_marginRight="10dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toTopOf="@id/position16"
+                        app:layout_constraintLeft_toLeftOf="@id/guideline"
+                        app:layout_constraintRight_toLeftOf="@id/position16"
+                        app:layout_constraintBottom_toBottomOf="@id/position16"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position16"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/position12"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position17"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="4dp"
+                        android:backgroundTint="#585858"
+                        app:layout_constraintTop_toBottomOf="@id/position13"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/position18"
+                        android:layout_width="32dp"
+                        android:layout_height="24dp"
+                        android:backgroundTint="#585858"
+                        android:layout_marginLeft="10dp"
+                        app:cardCornerRadius="4dp"
+                        app:layout_constraintTop_toTopOf="@id/position17"
+                        app:layout_constraintLeft_toRightOf="@id/position17"
+                        app:layout_constraintRight_toRightOf="@id/guideline"
+                        app:layout_constraintBottom_toBottomOf="@id/position17" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
