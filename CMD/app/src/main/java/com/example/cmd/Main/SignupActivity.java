@@ -15,10 +15,8 @@ import android.widget.Toast;
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
 import com.example.cmd.R;
-import com.example.cmd.Request.SignupRequest;
+import com.example.cmd.Request.SignUpRequest;
 import com.example.cmd.databinding.ActivitySignupBinding;
-
-import java.util.WeakHashMap;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -128,7 +126,7 @@ public class SignupActivity extends AppCompatActivity {
         String password = binding.etregisterPw.getText().toString();
         String secretKey = binding.etregistersecretKey.getText().toString();
 
-        SignupRequest signupRequest = new SignupRequest(userId, password);
+        SignUpRequest signupRequest = new SignUpRequest(userId, password);
 
         ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
 

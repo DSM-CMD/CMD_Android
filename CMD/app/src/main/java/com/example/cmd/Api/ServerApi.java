@@ -1,7 +1,7 @@
 package com.example.cmd.Api;
 
 import com.example.cmd.Request.SignInRequest;
-import com.example.cmd.Request.SignupRequest;
+import com.example.cmd.Request.SignUpRequest;
 import com.example.cmd.Response.NoticeResponse;
 import com.example.cmd.Response.SignInResponse;
 import com.example.cmd.Response.StudentInfoResponse;
@@ -21,7 +21,7 @@ public interface ServerApi {
     @POST("signup/{secretKey}")
     Call<Void> signup(
         @Path("secretKey") String secretKey,
-        @Body SignupRequest signupRequest
+        @Body SignUpRequest signupRequest
     );
 
     @POST("signin")

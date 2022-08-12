@@ -1,10 +1,10 @@
 package com.example.cmd.Request;
 
-public class SignupRequest {
+public class SignUpRequest {
     String userId;
     String password;
 
-    public SignupRequest(String userId, String password) {
+    public SignUpRequest(String userId, String password) {
         this.userId = userId;
         this.password = password;
     }

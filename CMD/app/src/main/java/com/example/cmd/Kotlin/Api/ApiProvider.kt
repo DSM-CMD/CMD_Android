@@ -9,5 +9,5 @@ object ApiProvider {
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(ServerApi::class.java)
+        .create(ServerApi2::class.java)
 }

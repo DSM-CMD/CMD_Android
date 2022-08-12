@@ -13,6 +13,12 @@
         android:theme="@style/Theme.CMD"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Kotlin.Main.SignUpActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".Kotlin.Main.SignInActivity2"
+            android:exported="false" />
+        <activity
             android:name=".Kotlin.Main.LobbyActivity2"
             android:exported="false" />
         <activity

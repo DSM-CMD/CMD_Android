@@ -16,7 +16,7 @@ class WatingActivity2 : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.wating.setOnClickListener{
-            val intent = Intent(applicationContext, LobbyActivity2::class.java)
+            val intent = Intent(applicationContext, SignInActivity2::class.java)
             startActivity(intent)
             finish()
         }
