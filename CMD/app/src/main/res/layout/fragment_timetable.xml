@@ -32,7 +32,6 @@
             android:id="@+id/tvdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sdfasdf"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_marginBottom="8dp"
