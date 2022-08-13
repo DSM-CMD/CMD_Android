@@ -6,6 +6,7 @@ import com.example.cmd.Response.NoticeResponse;
 import com.example.cmd.Response.SignInResponse;
 import com.example.cmd.Response.StudentInfoResponse;
 import com.example.cmd.Response.TimetableResponse;
+import com.example.cmd.Response.UserInfoResponse;
 
 import java.util.List;
 
@@ -44,4 +45,11 @@ public interface ServerApi {
     Call<List<NoticeResponse>> notice(
         @Header("Authorization") String accessToken
     );
+
+    @GET("user/info/{number}")
+    Call<UserInfoResponse> userinfo(
+        @Header("Authorization") String accessToken,
+        @Path("number") String number
+    );
+
 }

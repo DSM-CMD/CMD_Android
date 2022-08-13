@@ -7,6 +7,7 @@ import android.view.VerifiedInputEvent
 import android.view.View
 import android.view.ViewGroup
 import com.example.cmd.Kotlin.Api.ApiProvider
+import com.example.cmd.Kotlin.Main.SignInActivity2
 import com.example.cmd.Kotlin.Response.TimetableResponse2
 import com.example.cmd.R
 import com.example.cmd.databinding.FragmentTimetableBinding
@@ -37,7 +38,7 @@ class TimetableFragment2 : Fragment() {
 
         binding.tvdate.setText(format_time)
 
-        ApiProvider.retrofit.timeTable(calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(object : Callback<TimetableResponse2>{
+        ApiProvider.retrofit.timeTable(SignInActivity2.token, calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(object : Callback<TimetableResponse2>{
             override fun onResponse(
                 call: Call<TimetableResponse2>,
                 response: Response<TimetableResponse2>

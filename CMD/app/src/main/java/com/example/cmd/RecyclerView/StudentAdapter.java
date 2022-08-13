@@ -50,7 +50,12 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), DialogActivity.class);
+
+                intent.putExtra("number", list.get(position).getNumber());
+
                 view.getContext().startActivity(intent);
+
+
             }
         });
     }

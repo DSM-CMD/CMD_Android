@@ -25,11 +25,12 @@
             android:name=".Kotlin.Main.WatingActivity2"
             android:exported="false" />
         <activity
-            android:name=".Main.SplashActivity"
+            android:name=".Kotlin.Main.SplashActivity2"
             android:exported="false" />
         <activity
             android:name=".Main.DialogActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"/>
         <activity
             android:name=".Main.WatingActivity"
             android:exported="false" />
@@ -43,7 +44,7 @@
             android:name=".Main.LobbyActivity"
             android:exported="false" />
         <activity
-            android:name=".Kotlin.Main.SplashActivity2"
+            android:name=".Main.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
