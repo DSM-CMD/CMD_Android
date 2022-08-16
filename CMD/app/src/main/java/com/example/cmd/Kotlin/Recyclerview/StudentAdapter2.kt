@@ -9,7 +9,7 @@ import com.example.cmd.Kotlin.Response.StudentInfoResponse2
 import com.example.cmd.R
 import com.example.cmd.RecyclerView.StudentAdapter
 
-class StudentAdapter2(val list: List<StudentInfoResponse2>) : RecyclerView.Adapter<StudentAdapter2.StudentViewHolder2>() {
+class StudentAdapter2(val list: ArrayList<StudentInfoResponse2>) : RecyclerView.Adapter<StudentAdapter2.StudentViewHolder2>() {
 
     class StudentViewHolder2(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name = itemView.findViewById<TextView>(R.id.tvname)
