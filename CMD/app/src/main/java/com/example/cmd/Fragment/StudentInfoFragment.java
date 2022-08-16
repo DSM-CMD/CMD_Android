@@ -45,8 +45,6 @@ public class StudentInfoFragment extends Fragment {
 
         recyclerView.setAdapter(studentAdapter);
 
-        list.add(new StudentInfoResponse("sleifh", "1234"));
-
         ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
 
         serverApi.studentinfo(SignInActivity.accessToken).enqueue(new Callback<List<StudentInfoResponse>>() {

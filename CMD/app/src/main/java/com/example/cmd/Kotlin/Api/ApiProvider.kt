@@ -5,6 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiProvider {
     var BASE_URL = "http://54.180.122.62:8080/"
+
     var retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
