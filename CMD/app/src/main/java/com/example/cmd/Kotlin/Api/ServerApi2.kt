@@ -2,10 +2,12 @@ package com.example.cmd.Kotlin.Api
 
 import com.example.cmd.Kotlin.Request.SignInRequest2
 import com.example.cmd.Kotlin.Request.SignUpRequest2
+import com.example.cmd.Kotlin.Response.NoticeResponse2
 import com.example.cmd.Kotlin.Response.SignInResponse2
 import com.example.cmd.Kotlin.Response.StudentInfoResponse2
 import com.example.cmd.Kotlin.Response.TimetableResponse2
 import com.example.cmd.Request.SignUpRequest
+import com.example.cmd.Response.NoticeResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -32,5 +34,10 @@ interface ServerApi2 {
     fun studentinfo(
         @Header("Authorization") accessToken: String
     ) : Call<List<StudentInfoResponse2>>
+
+    @GET("user/noticeBoard")
+    fun notice(
+        @Header("Authorization") accessToken: String
+    ) : Call<List<NoticeResponse2>>
 
 }
