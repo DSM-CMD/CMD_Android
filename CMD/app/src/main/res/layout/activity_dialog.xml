@@ -187,6 +187,7 @@
                 app:layout_constraintLeft_toLeftOf="@id/textview6"/>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="240dp"
                 android:layout_height="216dp"
                 android:backgroundTint="#535353"
@@ -213,15 +214,15 @@
                         android:layout_height="24dp"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
-                        android:backgroundTint="#585858"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"/>
+                        app:layout_constraintLeft_toLeftOf="parent">
+
+                    </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/position2"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginLeft="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position1"
@@ -233,7 +234,6 @@
                         android:id="@+id/position3"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginRight="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position4"
@@ -245,7 +245,6 @@
                         android:id="@+id/position4"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="parent"
@@ -257,7 +256,6 @@
                         android:layout_height="24dp"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
-                        android:backgroundTint="#585858"
                         app:layout_constraintTop_toBottomOf="@id/position1"
                         app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -265,7 +263,6 @@
                         android:id="@+id/position6"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginLeft="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position5"
@@ -277,7 +274,6 @@
                         android:id="@+id/position7"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginRight="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position8"
@@ -289,7 +285,6 @@
                         android:id="@+id/position8"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toBottomOf="@id/position4"
@@ -301,7 +296,6 @@
                         android:layout_height="24dp"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
-                        android:backgroundTint="#585858"
                         app:layout_constraintTop_toBottomOf="@id/position5"
                         app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -309,7 +303,6 @@
                         android:id="@+id/position10"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginLeft="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position9"
@@ -321,7 +314,6 @@
                         android:id="@+id/position11"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginRight="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position12"
@@ -333,7 +325,6 @@
                         android:id="@+id/position12"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toBottomOf="@id/position8"
@@ -345,7 +336,6 @@
                         android:layout_height="24dp"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
-                        android:backgroundTint="#585858"
                         app:layout_constraintTop_toBottomOf="@id/position9"
                         app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -353,7 +343,6 @@
                         android:id="@+id/position14"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginLeft="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position13"
@@ -365,7 +354,6 @@
                         android:id="@+id/position15"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginRight="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position16"
@@ -377,7 +365,6 @@
                         android:id="@+id/position16"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toBottomOf="@id/position12"
@@ -389,7 +376,6 @@
                         android:layout_height="24dp"
                         android:layout_margin="16dp"
                         app:cardCornerRadius="4dp"
-                        android:backgroundTint="#585858"
                         app:layout_constraintTop_toBottomOf="@id/position13"
                         app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -397,7 +383,6 @@
                         android:id="@+id/position18"
                         android:layout_width="32dp"
                         android:layout_height="24dp"
-                        android:backgroundTint="#585858"
                         android:layout_marginLeft="10dp"
                         app:cardCornerRadius="4dp"
                         app:layout_constraintTop_toTopOf="@id/position17"
