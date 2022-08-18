@@ -29,7 +29,7 @@ class NoticeBoardFragment2 : Fragment() {
 
         binding = FragmentNoticeBoardBinding.inflate(inflater, container, false)
 
-        list = ArrayList<NoticeResponse2>()
+        list = ArrayList()
 
         binding.noticerecyclerview.layoutManager = LinearLayoutManager(activity)
         binding.noticerecyclerview.adapter = NoticeAdapter2(list)

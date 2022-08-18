@@ -29,10 +29,12 @@ class StudentInfoFragment2 : Fragment() {
 
         binding = FragmentStudentinfoBinding.inflate(inflater, container, false)
 
-        list = ArrayList<StudentInfoResponse2>()
+        list = ArrayList()
 
         binding.studentrecyclerview.layoutManager = GridLayoutManager(activity, 3)
         binding.studentrecyclerview.adapter = StudentAdapter2(list)
+
+        list.add(StudentInfoResponse2("selifhs", "seilhf"))
 
         ApiProvider.retrofit.studentinfo(SignInActivity2.token).enqueue(object : Callback<List<StudentInfoResponse2>> {
                 override fun onResponse(
