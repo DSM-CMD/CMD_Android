@@ -10,12 +10,21 @@ import android.text.method.SingleLineTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.appcompat.resources.Compatibility;
 import androidx.fragment.app.Fragment;
 
+import com.example.cmd.Api.ApiProvider;
+import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Main.SignInActivity;
 import com.example.cmd.R;
+import com.example.cmd.Response.MyInfoResponse;
 import com.example.cmd.databinding.FragmentMypageBinding;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MypageFragment extends Fragment {
     private FragmentMypageBinding binding;
@@ -27,6 +36,26 @@ public class MypageFragment extends Fragment {
         binding = FragmentMypageBinding.inflate(getLayoutInflater(), container, false);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
+
+        serverApi.myinfo(SignInActivity.accessToken).enqueue(new Callback<MyInfoResponse>() {
+            @Override
+            public void onResponse(Call<MyInfoResponse> call, Response<MyInfoResponse> response) {
+                if(response.isSuccessful()){
+                    binding.tvmyName.setText(response.body().getUsername());
+                    binding.tvmyname.setText(response.body().getUsername());
+                    binding.tvmyNumber.setText(response.body().getNumber());
+                    binding.tvmyBirth.setText(response.body().getBirthday());
+                    binding.tvmyMajor.setText(response.body().getField());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MyInfoResponse> call, Throwable t) {
+
+            }
+        });
 
         binding.cbLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +73,8 @@ public class MypageFragment extends Fragment {
                         Intent intent = new Intent(getActivity(), SignInActivity.class);
                         startActivity(intent);
                         getActivity().finish();
+
+                        Toast.makeText(getActivity(), "로그아웃 되었습니다!", Toast.LENGTH_SHORT).show();
                     }
                 });
 

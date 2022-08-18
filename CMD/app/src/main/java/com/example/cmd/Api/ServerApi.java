@@ -2,6 +2,7 @@ package com.example.cmd.Api;
 
 import com.example.cmd.Request.SignInRequest;
 import com.example.cmd.Request.SignUpRequest;
+import com.example.cmd.Response.MyInfoResponse;
 import com.example.cmd.Response.NoticeResponse;
 import com.example.cmd.Response.SignInResponse;
 import com.example.cmd.Response.StudentInfoResponse;
@@ -50,6 +51,11 @@ public interface ServerApi {
     Call<UserInfoResponse> userinfo(
         @Header("Authorization") String accessToken,
         @Path("number") String number
+    );
+
+    @GET("user/myInfo")
+    Call<MyInfoResponse> myinfo(
+        @Header("Authorization") String accessToken
     );
 
 }
