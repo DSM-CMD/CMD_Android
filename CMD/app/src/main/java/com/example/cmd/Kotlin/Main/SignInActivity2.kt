@@ -30,10 +30,13 @@ class SignInActivity2 : AppCompatActivity() {
         binding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        preferences = getSharedPreferences("User", MODE_PRIVATE)
+        editor = preferences.edit()
+
         if(preferences.getBoolean("check", false) == true){
             binding.etId.setText(preferences.getString("id", ""))
             binding.etPw.setText(preferences.getString("pw", ""))
-            binding.cbautlLogin.isChecked == true
+            binding.cbautlLogin.isChecked = true
             autosignIn()
         }
 
@@ -65,6 +68,8 @@ class SignInActivity2 : AppCompatActivity() {
                     val intent = Intent(applicationContext, LobbyActivity2::class.java)
                     startActivity(intent)
                     finish()
+
+                    Toast.makeText(applicationContext, "로그인 되었습니다!", Toast.LENGTH_SHORT).show()
                 }
             }
 
