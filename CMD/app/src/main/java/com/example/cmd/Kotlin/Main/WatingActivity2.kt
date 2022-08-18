@@ -27,7 +27,7 @@ class WatingActivity2 : AppCompatActivity() {
         binding.tvtouch.startAnimation(anim)
 
         binding.wating.setOnClickListener{
-            val intent = Intent(applicationContext, LobbyActivity2::class.java)
+            val intent = Intent(applicationContext, SignInActivity2::class.java)
             startActivity(intent)
             finish()
         }

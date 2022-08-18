@@ -44,7 +44,7 @@ public class MypageFragment extends Fragment {
             public void onResponse(Call<MyInfoResponse> call, Response<MyInfoResponse> response) {
                 if(response.isSuccessful()){
                     binding.tvmyName.setText(response.body().getUsername());
-                    binding.tvmyname.setText(response.body().getUsername());
+                    binding.tvmyId.setText(response.body().getUserId());
                     binding.tvmyNumber.setText(response.body().getNumber());
                     binding.tvmyBirth.setText(response.body().getBirthday());
                     binding.tvmyMajor.setText(response.body().getField());

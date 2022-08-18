@@ -158,22 +158,11 @@
                 android:id="@+id/textview6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전공 동아리"
                 android:textSize="13sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/notosanslight"
                 app:layout_constraintTop_toBottomOf="@id/textview5"
                 app:layout_constraintLeft_toLeftOf="@id/textview5"/>
-
-            <TextView
-                android:id="@+id/tvClub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosans"
-                android:textColor="@color/white"
-                app:layout_constraintTop_toTopOf="@id/textview6"
-                app:layout_constraintLeft_toLeftOf="@id/tvMajor"
-                app:layout_constraintBottom_toBottomOf="@id/textview6" />
 
             <TextView
                 android:id="@+id/textview7"
