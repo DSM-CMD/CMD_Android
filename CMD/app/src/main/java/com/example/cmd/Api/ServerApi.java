@@ -1,5 +1,6 @@
 package com.example.cmd.Api;
 
+import com.example.cmd.Request.InfoUpdateRequest;
 import com.example.cmd.Request.SignInRequest;
 import com.example.cmd.Request.SignUpRequest;
 import com.example.cmd.Response.MyInfoResponse;
@@ -16,6 +17,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ServerApi {
@@ -56,6 +58,12 @@ public interface ServerApi {
     @GET("user/myInfo")
     Call<MyInfoResponse> myinfo(
         @Header("Authorization") String accessToken
+    );
+
+    @PUT("user/myInfoUpdate")
+    Call<Void> infoUpdate(
+        @Header("Authorization") String accessToken,
+        @Body InfoUpdateRequest infoUpdateRequest
     );
 
 }
