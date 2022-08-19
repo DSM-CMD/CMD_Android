@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
+import com.example.cmd.Main.InfoUpdateActivity;
 import com.example.cmd.Main.SignInActivity;
 import com.example.cmd.R;
 import com.example.cmd.Response.MyInfoResponse;
@@ -54,6 +55,14 @@ public class MypageFragment extends Fragment {
             @Override
             public void onFailure(Call<MyInfoResponse> call, Throwable t) {
 
+            }
+        });
+
+        binding.cbchangeInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), InfoUpdateActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CMD"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".InfoUpdateActivity"
+            android:exported="false" />
+        <activity
             android:name=".Kotlin.Main.SignUpActivity2"
             android:exported="false" />
         <activity
@@ -30,7 +33,7 @@
         <activity
             android:name=".Main.DialogActivity"
             android:exported="false"
-            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"/>
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
         <activity
             android:name=".Main.WatingActivity"
             android:exported="false" />
