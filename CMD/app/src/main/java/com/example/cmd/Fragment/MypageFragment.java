@@ -61,8 +61,9 @@ public class MypageFragment extends Fragment {
         binding.cbchangeInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), InfoUpdateActivity.class);
+                Intent intent = new Intent(getActivity(), InfoUpdateActivity.class);
                 startActivity(intent);
+
             }
         });
 

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.CMD"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".InfoUpdateActivity"
+            android:name=".Main.InfoUpdateActivity"
             android:exported="false" />
         <activity
             android:name=".Kotlin.Main.SignUpActivity2"
