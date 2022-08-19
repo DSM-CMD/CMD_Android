@@ -159,6 +159,9 @@ public class SignInActivity extends AppCompatActivity {
                     finish();
                     startActivity(intent);
 
+                    editor.putString("Id", binding.etId.getText().toString()).commit();
+                    editor.putString("Pw", binding.etPw.getText().toString()).commit();
+
                 }
             }
 
