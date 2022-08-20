@@ -102,7 +102,7 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(SignupActivity.this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                 else if(binding.etregistersecretKey.getText().length() == 0)
                     Toast.makeText(SignupActivity.this, "가입코드를 입력해주세요", Toast.LENGTH_SHORT).show();
-                else if(binding.etregisterPw.getText() != binding.etregisterpwcheck)
+                else if(binding.etregisterPw.getText().toString().equals(binding.etregisterpwcheck.getText().toString()) == false)
                     Toast.makeText(SignupActivity.this, "비밀번호가 다릅니다", Toast.LENGTH_SHORT).show();
                 else{
                     signUP();
@@ -135,7 +135,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful())
                     Toast.makeText(SignupActivity.this, "회원가입 되었습니다! 로그인 후 이용해주세요", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                     startActivity(intent);
                     finish();
             }

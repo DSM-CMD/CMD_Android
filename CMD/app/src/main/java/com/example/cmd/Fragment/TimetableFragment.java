@@ -65,11 +65,22 @@ public class TimetableFragment extends Fragment {
                     binding.tvperiod09.setText(response.body().getPeriod9th());
                     binding.tvperiod10.setText(response.body().getPeriod10th());
                 }
+                else if(response.code() == 500){
+                    binding.tvperiod01.setText("시");
+                    binding.tvperiod02.setText("간");
+                    binding.tvperiod03.setText("표");
+                    binding.tvperiod04.setText("가");
+                    binding.tvperiod05.setText("없");
+                    binding.tvperiod06.setText("어");
+                    binding.tvperiod07.setText("용");
+                    binding.tvperiod08.setText("!");
+                    binding.tvperiod09.setText("!");
+                    binding.tvperiod10.setText("!");
+                }
             }
 
             @Override
             public void onFailure(Call<TimetableResponse> call, Throwable t) {
-
             }
         });
 
