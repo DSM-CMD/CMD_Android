@@ -32,6 +32,7 @@
             android:id="@+id/tvdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="2022년 08월 22일"
             android:textSize="16sp"
             android:textColor="@color/white"
             android:layout_marginBottom="8dp"
@@ -68,6 +69,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:id="@+id/period01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
+                <TextView
                     android:id="@+id/tvperiod01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,6 +95,15 @@
                 app:layout_constraintTop_toBottomOf="@id/cvperiod01"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:id="@+id/period02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
+
 
                 <TextView
                     android:id="@+id/tvperiod02"
@@ -110,6 +127,14 @@
                 app:layout_constraintRight_toRightOf="parent">
 
                 <TextView
+                    android:id="@+id/period03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
+
+                <TextView
                     android:id="@+id/tvperiod03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,6 +154,14 @@
                 app:layout_constraintTop_toBottomOf="@id/cvperiod03"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:id="@+id/period04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
 
                 <TextView
                     android:id="@+id/tvperiod04"
@@ -152,6 +185,14 @@
                 app:layout_constraintRight_toRightOf="parent">
 
                 <TextView
+                    android:id="@+id/period05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
+
+                <TextView
                     android:id="@+id/tvperiod05"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,6 +212,14 @@
                 app:layout_constraintTop_toBottomOf="@id/cvperiod05"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:id="@+id/period06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
 
                 <TextView
                     android:id="@+id/tvperiod06"
@@ -194,6 +243,14 @@
                 app:layout_constraintRight_toRightOf="parent">
 
                 <TextView
+                    android:id="@+id/period07"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
+
+                <TextView
                     android:id="@+id/tvperiod07"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -213,6 +270,14 @@
                 app:layout_constraintTop_toBottomOf="@id/cvperiod07"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
+
+                <TextView
+                    android:id="@+id/period08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
 
                 <TextView
                     android:id="@+id/tvperiod08"
@@ -236,6 +301,14 @@
                 app:layout_constraintRight_toRightOf="parent">
 
                 <TextView
+                    android:id="@+id/period09"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
+
+                <TextView
                     android:id="@+id/tvperiod09"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -257,6 +330,14 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
+
+                <TextView
+                    android:id="@+id/period10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="48dp"/>
 
                 <TextView
                     android:id="@+id/tvperiod10"

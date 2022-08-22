@@ -46,6 +46,8 @@ public class TimetableFragment extends Fragment {
 
         String format_time = format.format(calendar.getTime());
 
+        binding.tvdate.setText(format_time);
+
         calendar.setTime(currentDate);
 
         ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
@@ -64,6 +66,9 @@ public class TimetableFragment extends Fragment {
                     binding.tvperiod08.setText(response.body().getPeriod8th());
                     binding.tvperiod09.setText(response.body().getPeriod9th());
                     binding.tvperiod10.setText(response.body().getPeriod10th());
+
+                    setperiod();
+
                 }
                 else if(response.code() == 500){
                     binding.tvperiod01.setText("시");
@@ -85,5 +90,18 @@ public class TimetableFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    private void setperiod() {
+        binding.period01.setText("1교시");
+        binding.period02.setText("2교시");
+        binding.period03.setText("3교시");
+        binding.period04.setText("4교시");
+        binding.period05.setText("5교시");
+        binding.period06.setText("6교시");
+        binding.period07.setText("7교시");
+        binding.period08.setText("8교시");
+        binding.period09.setText("9교시");
+        binding.period10.setText("10교시");
     }
 }
