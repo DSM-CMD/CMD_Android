@@ -4,22 +4,18 @@ package com.example.cmd.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.method.SingleLineTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.resources.Compatibility;
 import androidx.fragment.app.Fragment;
 
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
-import com.example.cmd.Main.InfoUpdateActivity;
-import com.example.cmd.Main.SignInActivity;
-import com.example.cmd.R;
+import com.example.cmd.Activity.InfoUpdateActivity;
+import com.example.cmd.Activity.SignInActivity;
 import com.example.cmd.Response.MyInfoResponse;
 import com.example.cmd.databinding.FragmentMypageBinding;
 

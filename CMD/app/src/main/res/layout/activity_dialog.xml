@@ -5,7 +5,7 @@
     android:layout_width="316dp"
     android:layout_height="752dp"
     android:background="#000000"
-    tools:context=".Main.DialogActivity">
+    tools:context=".Activity.DialogActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="316dp"

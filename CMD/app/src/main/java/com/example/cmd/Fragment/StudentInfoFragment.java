@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
-import com.example.cmd.Main.SignInActivity;
+import com.example.cmd.Activity.SignInActivity;
 import com.example.cmd.R;
 import com.example.cmd.RecyclerView.StudentAdapter;
 import com.example.cmd.Response.StudentInfoResponse;

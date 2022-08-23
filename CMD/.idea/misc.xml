@@ -7,13 +7,17 @@
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/etradius.xml" value="0.1825" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.116" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/ic_baseline_arrow_drop_up_24.xml" value="0.195" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/ic_baseline_chevron_left_24.xml" value="0.1695" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/ic_baseline_chevron_right_24.xml" value="0.1695" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/studentinfo.xml" value="0.1" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/drawable/timetable.xml" value="0.2375" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_info_update.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_lobby.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_signin.xml" value="0.264" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_signup.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_splash.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/activity_test.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/fragment_mypage.xml" value="0.175" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/fragment_notice_board.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/fragment_studentinfo.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/DSM2022/Desktop/Github/CMD/CMD/app/src/main/res/layout/fragment_timetable.xml" value="0.264" />

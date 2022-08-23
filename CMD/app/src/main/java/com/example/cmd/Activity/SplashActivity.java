@@ -1,14 +1,11 @@
-package com.example.cmd.Main;
+package com.example.cmd.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
-import com.example.cmd.R;
 import com.example.cmd.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {

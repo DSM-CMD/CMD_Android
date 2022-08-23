@@ -1,6 +1,7 @@
 
 package com.example.cmd.Fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
-import com.example.cmd.Main.SignInActivity;
+import com.example.cmd.Activity.SignInActivity;
 import com.example.cmd.R;
 import com.example.cmd.RecyclerView.NoticeAdapter;
 import com.example.cmd.Response.NoticeResponse;
@@ -39,6 +40,8 @@ public class NoticeBoardFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentNoticeBoardBinding.inflate(inflater, container, false);
+
+
 
         if(SignInActivity.preferences.getBoolean("Switch", false) == true){
             binding.ivswitch.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24);

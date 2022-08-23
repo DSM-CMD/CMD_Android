@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cmd.Main.DialogActivity;
+import com.example.cmd.Activity.DialogActivity;
 import com.example.cmd.R;
 import com.example.cmd.Response.StudentInfoResponse;
 

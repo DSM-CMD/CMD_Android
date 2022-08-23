@@ -1,4 +1,4 @@
-package com.example.cmd.Main;
+package com.example.cmd.Activity;
 
 import android.app.Activity;
 import android.content.Intent;

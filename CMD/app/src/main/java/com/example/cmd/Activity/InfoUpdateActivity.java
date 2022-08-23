@@ -1,8 +1,7 @@
-package com.example.cmd.Main;
+package com.example.cmd.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -87,7 +86,7 @@ public class InfoUpdateActivity extends AppCompatActivity {
     }
 
     private void updateCheck() {
-        if(binding.etupdatePw.getText().length() !=0 && binding.etupdatenewPw.getText().length() !=0 && binding.etupdatenewpwCheck.getText().length() !=0){
+        if(binding.etupdatePw.getText().length() !=0 && binding.etupdateBirth.getText().length() != 0 && binding.etupdateMajor.getText().length() != 0){
             if(binding.etupdatePw.getText().toString().equals(SignInActivity.preferences.getString("Pw", "")) == true){
                 if(binding.etupdatePw.getText().toString().equals(binding.etupdatenewPw.getText().toString()) == true){
                     Toast.makeText(this, "현재 비밀번호와 새 비밀번호가 같습니다", Toast.LENGTH_SHORT).show();
