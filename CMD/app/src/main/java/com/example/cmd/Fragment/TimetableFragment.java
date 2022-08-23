@@ -26,7 +26,9 @@ import retrofit2.Response;
 public class TimetableFragment extends Fragment {
 
     private FragmentTimetableBinding binding;
-    private int count;
+    private int right;
+    private int left;
+    private Calendar calendar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,52 +36,63 @@ public class TimetableFragment extends Fragment {
 
         binding = FragmentTimetableBinding.inflate(getLayoutInflater(), container, false);
 
-        Date currentDate = new Date();
+        right = 0;
+        left = 0;
 
-        Calendar calendar = Calendar.getInstance();
+        timetable();
 
-        SimpleDateFormat format = new SimpleDateFormat("MM월 dd일" + " " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일");
-
-        String format_time = format.format(calendar.getTime());
-
-        binding.tvdate.setText(format_time);
-
-        count = 0;
-
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-        serverApi.timetable(SignInActivity.accessToken,  calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
+        binding.tvtimetable.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
-                if(response.isSuccessful()){
-                    binding.tvperiod01.setText(response.body().getPeriod1st());
-                    binding.tvperiod02.setText(response.body().getPeriod2nd());
-                    binding.tvperiod03.setText(response.body().getPeriod3th());
-                    binding.tvperiod04.setText(response.body().getPeriod4th());
-                    binding.tvperiod05.setText(response.body().getPeriod5th());
-                    binding.tvperiod06.setText(response.body().getPeriod6th());
-                    binding.tvperiod07.setText(response.body().getPeriod7th());
-                    binding.tvperiod08.setText(response.body().getPeriod8th());
-                    binding.tvperiod09.setText(response.body().getPeriod9th());
-                    binding.tvperiod10.setText(response.body().getPeriod10th());
-
-                    setperiod();
-                }
-                else if(response.code() == 500){
-                    binding.tvperiod01.setText("시");
-                    binding.tvperiod02.setText("간");
-                    binding.tvperiod03.setText("표");
-                    binding.tvperiod04.setText("가");
-                    binding.tvperiod05.setText("없");
-                    binding.tvperiod06.setText("어");
-                    binding.tvperiod07.setText("용");
-                    binding.tvperiod08.setText("!");
-                    binding.tvperiod09.setText("!");
-                    binding.tvperiod10.setText("!");
-                }
+            public void onClick(View view) {
+                timetable();
             }
+        });
 
+        binding.ivleft.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(Call<TimetableResponse> call, Throwable t) {
+            public void onClick(View view) {
+                ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
+                left++;
+                calendar.add(Calendar.DATE, -1);
+                String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
+                binding.tvdate.setText(format);
+                serverApi.timetable(SignInActivity.accessToken, left(intreturn()+left)).enqueue(new Callback<TimetableResponse>() {
+                    @Override
+                    public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
+                        if(response.isSuccessful()){
+                            binding.tvperiod01.setText(response.body().getPeriod1st());
+                            binding.tvperiod02.setText(response.body().getPeriod2nd());
+                            binding.tvperiod03.setText(response.body().getPeriod3th());
+                            binding.tvperiod04.setText(response.body().getPeriod4th());
+                            binding.tvperiod05.setText(response.body().getPeriod5th());
+                            binding.tvperiod06.setText(response.body().getPeriod6th());
+                            binding.tvperiod07.setText(response.body().getPeriod7th());
+                            binding.tvperiod08.setText(response.body().getPeriod8th());
+                            binding.tvperiod09.setText(response.body().getPeriod9th());
+                            binding.tvperiod10.setText(response.body().getPeriod10th());
+
+                            setperiod();
+                        }else if(response.code() == 500){
+                            binding.tvperiod01.setText("시");
+                            binding.tvperiod02.setText("간");
+                            binding.tvperiod03.setText("표");
+                            binding.tvperiod04.setText("가");
+                            binding.tvperiod05.setText("없");
+                            binding.tvperiod06.setText("어");
+                            binding.tvperiod07.setText("용");
+                            binding.tvperiod08.setText("!");
+                            binding.tvperiod09.setText("!");
+                            binding.tvperiod10.setText("!");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<TimetableResponse> call, Throwable t) {
+
+                    }
+                });
+
+
             }
         });
 
@@ -87,11 +100,11 @@ public class TimetableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-                count++;
+                right++;
                 calendar.add(Calendar.DATE, 1);
-                binding.tvdate.setText(format_time);
-                weekreturn(intreturn());
-                serverApi.timetable(SignInActivity.accessToken, weekreturn(intreturn()+count)).enqueue(new Callback<TimetableResponse>() {
+                String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
+                binding.tvdate.setText(format);
+                serverApi.timetable(SignInActivity.accessToken, right(intreturn()+right)).enqueue(new Callback<TimetableResponse>() {
                     @Override
                     public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                         if(response.isSuccessful()){
@@ -169,16 +182,73 @@ public class TimetableFragment extends Fragment {
         return temp;
     }
 
-    private String weekreturn(int temp){
+    private String right(int temp){
         String week = null;
         if(temp % 7 == 0) week = "Mon";
         if(temp % 7 == 1) week = "Tue";
         if(temp % 7 == 2) week = "Wed";
         if(temp % 7 == 3) week = "Thu";
         if(temp % 7 == 4) week = "Fri";
-        if(temp % 7 == 5) week = "Sat";
         if(temp % 7 == 6) week = "Sun";
+        if(temp % 7 == 5) week = "Sat";
 
         return week;
+    }
+
+    private String left(int temp){
+        String week = null;
+        if(temp % 7 == 6) week = "Mon";
+        if(temp % 7 == 5) week = "Tue";
+        if(temp % 7 == 4) week = "Wed";
+        if(temp % 7 == 3) week = "Thu";
+        if(temp % 7 == 2) week = "Fri";
+        if(temp % 7 == 1) week = "Sat";
+        if(temp % 7 == 0) week = "Sun";
+
+        return week;
+    }
+
+    private void timetable(){
+        calendar = Calendar.getInstance();
+
+        String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
+
+        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
+        serverApi.timetable(SignInActivity.accessToken,  calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
+            @Override
+            public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
+                if(response.isSuccessful()){
+                    binding.tvperiod01.setText(response.body().getPeriod1st());
+                    binding.tvperiod02.setText(response.body().getPeriod2nd());
+                    binding.tvperiod03.setText(response.body().getPeriod3th());
+                    binding.tvperiod04.setText(response.body().getPeriod4th());
+                    binding.tvperiod05.setText(response.body().getPeriod5th());
+                    binding.tvperiod06.setText(response.body().getPeriod6th());
+                    binding.tvperiod07.setText(response.body().getPeriod7th());
+                    binding.tvperiod08.setText(response.body().getPeriod8th());
+                    binding.tvperiod09.setText(response.body().getPeriod9th());
+                    binding.tvperiod10.setText(response.body().getPeriod10th());
+
+                    setperiod();
+                }
+                else if(response.code() == 500){
+                    binding.tvperiod01.setText("시");
+                    binding.tvperiod02.setText("간");
+                    binding.tvperiod03.setText("표");
+                    binding.tvperiod04.setText("가");
+                    binding.tvperiod05.setText("없");
+                    binding.tvperiod06.setText("어");
+                    binding.tvperiod07.setText("용");
+                    binding.tvperiod08.setText("!");
+                    binding.tvperiod09.setText("!");
+                    binding.tvperiod10.setText("!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TimetableResponse> call, Throwable t) {
+            }
+        });
+        binding.tvdate.setText(format);
     }
 }
