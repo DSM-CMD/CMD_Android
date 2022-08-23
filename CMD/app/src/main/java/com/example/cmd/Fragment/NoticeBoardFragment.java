@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,26 +42,6 @@ public class NoticeBoardFragment extends Fragment {
 
         binding = FragmentNoticeBoardBinding.inflate(inflater, container, false);
 
-
-
-        if(SignInActivity.preferences.getBoolean("Switch", false) == true){
-            binding.ivswitch.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24);
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.up);
-        }else if(SignInActivity.preferences.getBoolean("Switch", false) == false){
-            binding.ivswitch.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
-            animation = AnimationUtils.loadAnimation(getActivity(), R.anim.down);
-        }
-
-        binding.ivswitch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                binding.ivswitch.startAnimation(animation);
-                if(SignInActivity.preferences.getBoolean("Switch", false) == false){
-                    SignInActivity.editor.putBoolean("Switch", true).commit();
-                }else SignInActivity.editor.putBoolean("Switch", false).commit();
-            }
-        });
-
         list = new ArrayList<>();
 
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -70,6 +51,30 @@ public class NoticeBoardFragment extends Fragment {
         noticeAdapter = new NoticeAdapter(list);
 
         binding.noticerecyclerview.setAdapter(noticeAdapter);
+
+        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.down);
+
+        if(check() == true){
+            binding.ivswitch.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24);
+        }else if(check() == false){
+            binding.ivswitch.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        }
+
+        binding.ivswitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(check() == true){
+                    animation.setRepeatMode(Animation.REVERSE);
+                    binding.ivswitch.startAnimation(animation);
+                    Toast.makeText(getActivity(), SignInActivity.preferences.getBoolean("Switch", false) + "", Toast.LENGTH_SHORT).show();
+                    SignInActivity.editor.putBoolean("Switch", false).commit();
+                }else {
+                    binding.ivswitch.startAnimation(animation);
+                    Toast.makeText(getActivity(), SignInActivity.preferences.getBoolean("Switch", false) + "", Toast.LENGTH_SHORT).show();
+                    SignInActivity.editor.putBoolean("Switch", true).commit();
+                }
+            }
+        });
 
         ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
 
@@ -88,5 +93,14 @@ public class NoticeBoardFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    private boolean check(){
+        boolean check;
+        if(SignInActivity.preferences.getBoolean("Switch", false) == true){
+            check = true;
+        }else check = false;
+
+        return check;
     }
 }
