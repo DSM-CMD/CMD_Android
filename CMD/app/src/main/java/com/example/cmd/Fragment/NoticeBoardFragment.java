@@ -1,7 +1,9 @@
 
 package com.example.cmd.Fragment;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +35,6 @@ public class NoticeBoardFragment extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private NoticeAdapter noticeAdapter;
     private FragmentNoticeBoardBinding binding;
-    Animation animation;
     List<NoticeResponse> list;
 
     @Override
@@ -52,27 +53,33 @@ public class NoticeBoardFragment extends Fragment {
 
         binding.noticerecyclerview.setAdapter(noticeAdapter);
 
-        animation = AnimationUtils.loadAnimation(getActivity(), R.anim.down);
-
-        if(check() == true){
-            binding.ivswitch.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24);
-        }else if(check() == false){
-            binding.ivswitch.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24);
+        if(SignInActivity.preferences.getBoolean("Switch", false) == false){
+            binding.teacher.setTextColor(Color.WHITE);
+            binding.student.setTextColor(Color.parseColor("#676767"));
+            binding.textview.setText("공지사항");
+        }else{
+            binding.student.setTextColor(Color.WHITE);
+            binding.teacher.setTextColor(Color.parseColor("#676767"));
+            binding.textview.setText("게시판");
         }
 
-        binding.ivswitch.setOnClickListener(new View.OnClickListener() {
+        binding.teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(check() == true){
-                    animation.setRepeatMode(Animation.REVERSE);
-                    binding.ivswitch.startAnimation(animation);
-                    Toast.makeText(getActivity(), SignInActivity.preferences.getBoolean("Switch", false) + "", Toast.LENGTH_SHORT).show();
-                    SignInActivity.editor.putBoolean("Switch", false).commit();
-                }else {
-                    binding.ivswitch.startAnimation(animation);
-                    Toast.makeText(getActivity(), SignInActivity.preferences.getBoolean("Switch", false) + "", Toast.LENGTH_SHORT).show();
-                    SignInActivity.editor.putBoolean("Switch", true).commit();
-                }
+                binding.teacher.setTextColor(Color.WHITE);
+                binding.student.setTextColor(Color.parseColor("#676767"));
+                SignInActivity.editor.putBoolean("Switch", false).commit();
+                binding.textview.setText("공지사항");
+            }
+        });
+
+        binding.student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.student.setTextColor(Color.WHITE);
+                binding.teacher.setTextColor(Color.parseColor("#676767"));
+                SignInActivity.editor.putBoolean("Switch", true).commit();
+                binding.textview.setText("게시판");
             }
         });
 
@@ -93,14 +100,5 @@ public class NoticeBoardFragment extends Fragment {
         });
 
         return binding.getRoot();
-    }
-
-    private boolean check(){
-        boolean check;
-        if(SignInActivity.preferences.getBoolean("Switch", false) == true){
-            check = true;
-        }else check = false;
-
-        return check;
     }
 }

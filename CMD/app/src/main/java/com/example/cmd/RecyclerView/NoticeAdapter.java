@@ -1,13 +1,16 @@
 package com.example.cmd.RecyclerView;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cmd.Activity.SubjectActivity;
 import com.example.cmd.R;
 import com.example.cmd.Response.NoticeResponse;
 
@@ -25,12 +28,14 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
 
         public TextView tvTitle;
         public TextView tvContent;
+        public CardView notice;
 
         public NoticeViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvTitle = itemView.findViewById(R.id.tvtitle);
             tvContent = itemView.findViewById(R.id.tvcontents);
+            notice = itemView.findViewById(R.id.notice);
 
         }
     }

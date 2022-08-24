@@ -34,25 +34,7 @@ public class MypageFragment extends Fragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-
-        serverApi.myinfo(SignInActivity.accessToken).enqueue(new Callback<MyInfoResponse>() {
-            @Override
-            public void onResponse(Call<MyInfoResponse> call, Response<MyInfoResponse> response) {
-                if(response.isSuccessful()){
-                    binding.tvmyName.setText(response.body().getUsername());
-                    binding.tvmyId.setText(response.body().getUserId());
-                    binding.tvmyNumber.setText(response.body().getNumber());
-                    binding.tvmyBirth.setText(response.body().getBirthday());
-                    binding.tvmyMajor.setText(response.body().getField());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MyInfoResponse> call, Throwable t) {
-
-            }
-        });
+        mypage();
 
         binding.cbchangeInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,5 +78,33 @@ public class MypageFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    private void mypage() {
+        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
+
+        serverApi.myinfo(SignInActivity.accessToken).enqueue(new Callback<MyInfoResponse>() {
+            @Override
+            public void onResponse(Call<MyInfoResponse> call, Response<MyInfoResponse> response) {
+                if(response.isSuccessful()){
+                    binding.tvmyName.setText(response.body().getUsername());
+                    binding.tvmyId.setText(response.body().getUserId());
+                    binding.tvmyNumber.setText(response.body().getNumber());
+                    binding.tvmyBirth.setText(response.body().getBirthday());
+                    binding.tvmyMajor.setText(response.body().getField());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MyInfoResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mypage();
     }
 }
