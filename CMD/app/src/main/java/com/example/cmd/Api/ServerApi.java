@@ -7,10 +7,13 @@ import com.example.cmd.Response.MyInfoResponse;
 import com.example.cmd.Response.NoticeResponse;
 import com.example.cmd.Response.SignInResponse;
 import com.example.cmd.Response.StudentInfoResponse;
+import com.example.cmd.Response.SubjectResponse;
 import com.example.cmd.Response.TimetableResponse;
 import com.example.cmd.Response.UserInfoResponse;
 
 import java.util.List;
+
+import javax.security.auth.Subject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -64,6 +67,12 @@ public interface ServerApi {
     Call<Void> infoUpdate(
         @Header("Authorization") String accessToken,
         @Body InfoUpdateRequest infoUpdateRequest
+    );
+
+    @GET("user/subject/{subjectNumber}")
+    Call<SubjectResponse> subject(
+            @Header("Authorization") String accessToken,
+            @Path("subjectNumber") int subjectNumber
     );
 
 }

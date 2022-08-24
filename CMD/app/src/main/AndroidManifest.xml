@@ -31,6 +31,10 @@
             android:name=".Kotlin.Main.SplashActivity2"
             android:exported="false" />
         <activity
+            android:name=".Activity.SubjectActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity
             android:name=".Activity.DialogActivity"
             android:exported="false"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
