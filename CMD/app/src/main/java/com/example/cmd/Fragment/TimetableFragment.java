@@ -59,8 +59,6 @@ public class TimetableFragment extends Fragment {
                 ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
                 diraction--;
                 calendar.add(Calendar.DATE, -1);
-                Toast.makeText(getActivity(), left(intreturn()+diraction), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "" + diraction, Toast.LENGTH_SHORT).show();
                 String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
                 binding.tvdate.setText(format);
                 serverApi.timetable(SignInActivity.accessToken, left(intreturn()+diraction)).enqueue(new Callback<TimetableResponse>() {
@@ -108,9 +106,7 @@ public class TimetableFragment extends Fragment {
             public void onClick(View view) {
                 ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
                 diraction++;
-                Toast.makeText(getActivity(), right(intreturn()+diraction), Toast.LENGTH_SHORT).show();
                 calendar.add(Calendar.DATE, 1);
-                Toast.makeText(getActivity(), "" + diraction, Toast.LENGTH_SHORT).show();
                 String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
                 binding.tvdate.setText(format);
                 serverApi.timetable(SignInActivity.accessToken, right(intreturn()+diraction)).enqueue(new Callback<TimetableResponse>() {

@@ -2,6 +2,7 @@
 package com.example.cmd.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.cmd.Activity.PostActivity;
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Activity.SignInActivity;
@@ -43,6 +45,8 @@ public class NoticeBoardFragment extends Fragment {
 
         binding = FragmentNoticeBoardBinding.inflate(inflater, container, false);
 
+        binding.cbpost.setElevation(0);
+
         list = new ArrayList<>();
 
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -57,10 +61,12 @@ public class NoticeBoardFragment extends Fragment {
             binding.teacher.setTextColor(Color.WHITE);
             binding.student.setTextColor(Color.parseColor("#676767"));
             binding.textview.setText("공지사항");
+            binding.cbpost.setCardBackgroundColor(Color.parseColor("#232323"));
         }else{
             binding.student.setTextColor(Color.WHITE);
             binding.teacher.setTextColor(Color.parseColor("#676767"));
             binding.textview.setText("게시판");
+            binding.cbpost.setCardBackgroundColor(Color.WHITE);
         }
 
         binding.teacher.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +76,7 @@ public class NoticeBoardFragment extends Fragment {
                 binding.student.setTextColor(Color.parseColor("#676767"));
                 SignInActivity.editor.putBoolean("Switch", false).commit();
                 binding.textview.setText("공지사항");
+                binding.cbpost.setCardBackgroundColor(Color.parseColor("#232323"));
             }
         });
 
@@ -80,8 +87,20 @@ public class NoticeBoardFragment extends Fragment {
                 binding.teacher.setTextColor(Color.parseColor("#676767"));
                 SignInActivity.editor.putBoolean("Switch", true).commit();
                 binding.textview.setText("게시판");
+                binding.cbpost.setCardBackgroundColor(Color.WHITE);
             }
         });
+
+        if(SignInActivity.preferences.getBoolean("Switch", false) == true){
+            binding.cbpost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getActivity(), "" + SignInActivity.preferences.getBoolean("Switch", false), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), PostActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
         ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
 
