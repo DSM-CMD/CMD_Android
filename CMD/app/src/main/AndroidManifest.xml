@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CMD"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.PostActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.InfoUpdateActivity"
             android:exported="false" />
         <activity
@@ -48,10 +51,10 @@
             android:name=".Activity.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.SplashActivity"
+            android:name=".Activity.LobbyActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LobbyActivity"
+            android:name=".Activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
