@@ -1,6 +1,7 @@
 package com.example.cmd.Api;
 
 import com.example.cmd.Request.InfoUpdateRequest;
+import com.example.cmd.Request.PostRequest;
 import com.example.cmd.Request.SignInRequest;
 import com.example.cmd.Request.SignUpRequest;
 import com.example.cmd.Response.MyInfoResponse;
@@ -79,6 +80,12 @@ public interface ServerApi {
     @GET("user/post")
     Call<List<UserPostResponse>> userpost(
             @Header("Authorization") String accessToken
+    );
+
+    @POST("user/post")
+    Call<Void> post(
+            @Header("Authorization") String accessToken,
+            @Body PostRequest postRequest
     );
 
 }
