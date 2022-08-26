@@ -10,6 +10,7 @@ import com.example.cmd.Response.StudentInfoResponse;
 import com.example.cmd.Response.SubjectResponse;
 import com.example.cmd.Response.TimetableResponse;
 import com.example.cmd.Response.UserInfoResponse;
+import com.example.cmd.Response.UserPostResponse;
 
 import java.util.List;
 
@@ -73,6 +74,11 @@ public interface ServerApi {
     Call<SubjectResponse> subject(
             @Header("Authorization") String accessToken,
             @Path("subjectNumber") int subjectNumber
+    );
+
+    @GET("user/post")
+    Call<List<UserPostResponse>> userpost(
+            @Header("Authorization") String accessToken
     );
 
 }

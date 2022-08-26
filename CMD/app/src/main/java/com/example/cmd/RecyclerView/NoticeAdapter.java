@@ -28,14 +28,12 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
 
         public TextView tvTitle;
         public TextView tvContent;
-        public CardView notice;
 
         public NoticeViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvTitle = itemView.findViewById(R.id.tvtitle);
             tvContent = itemView.findViewById(R.id.tvcontents);
-            notice = itemView.findViewById(R.id.notice);
 
         }
     }

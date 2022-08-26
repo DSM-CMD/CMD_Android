@@ -78,8 +78,8 @@
             android:hint="내용"
             android:textColor="@color/white"
             android:textCursorDrawable="@color/white"
-            android:gravity="top"
             android:maxLines="20"
+            android:gravity="top"
             android:backgroundTint="@color/white"/>
 
     </com.google.android.material.textfield.TextInputLayout>
