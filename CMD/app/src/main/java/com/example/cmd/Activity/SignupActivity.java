@@ -3,7 +3,6 @@ package com.example.cmd.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,8 +11,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
 import com.example.cmd.R;
 import com.example.cmd.Request.SignUpRequest;
 import com.example.cmd.databinding.ActivitySignupBinding;
@@ -25,8 +22,6 @@ import retrofit2.Response;
 public class SignupActivity extends AppCompatActivity {
 
     private ActivitySignupBinding binding;
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +30,10 @@ public class SignupActivity extends AppCompatActivity {
         binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        preferences = getSharedPreferences("Visible", MODE_PRIVATE);
-        editor = preferences.edit();
-
+        // Edittext 입력 변화에 따른 changed 리스너
         binding.etregisterId.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -58,58 +49,73 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
+        // visible 이미지 클릭 리스너
         binding.ivvisible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(preferences.getBoolean("visibleregister", false) == false) {
+                boolean visiblePw = SignInActivity.preferences.getBoolean("visibleregister", false);
+                int length = binding.etregisterPw.getText().length();
+
+                if(visiblePw == false) {
                     binding.ivvisible.setImageResource(R.drawable.ic_baseline_visibility_24);
                     binding.etregisterPw.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
-                    binding.etregisterPw.setSelection(binding.etregisterPw.getText().length());
-                    editor.putBoolean("visibleregister", true).commit();
-                }else if(preferences.getBoolean("visibleregister", false) == true){
+                    binding.etregisterPw.setSelection(length);
+                    SignInActivity.editor.putBoolean("visibleregister", true).commit();
+                }else if(visiblePw == true){
                     binding.ivvisible.setImageResource(R.drawable.ic_baseline_visibility_off_24);
                     binding.etregisterPw.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    binding.etregisterPw.setSelection(binding.etregisterPw.getText().length());
-                    editor.putBoolean("visibleregister", false).commit();
+                    binding.etregisterPw.setSelection(length);
+                    SignInActivity.editor.putBoolean("visibleregister", false).commit();
                 }
             }
         });
 
+        // visible check 이미지 클릭 리스너
         binding.ivvisiblecheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(preferences.getBoolean("visibleregistercheck", false) == false) {
+                boolean visibleCheck = SignInActivity.preferences.getBoolean("visibleregistercheck", false);
+                int length = binding.etregisterpwcheck.getText().length();
+
+                if(visibleCheck == false) {
                     binding.ivvisiblecheck.setImageResource(R.drawable.ic_baseline_visibility_24);
                     binding.etregisterpwcheck.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
-                    binding.etregisterpwcheck.setSelection(binding.etregisterpwcheck.getText().length());
-                    editor.putBoolean("visibleregistercheck", true).commit();
-                }else if(preferences.getBoolean("visibleregistercheck", false) == true){
+                    binding.etregisterpwcheck.setSelection(length);
+                    SignInActivity.editor.putBoolean("visibleregistercheck", true).commit();
+                }else if(visibleCheck == true){
                     binding.ivvisiblecheck.setImageResource(R.drawable.ic_baseline_visibility_off_24);
                     binding.etregisterpwcheck.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    binding.etregisterpwcheck.setSelection(binding.etregisterpwcheck.getText().length());
-                    editor.putBoolean("visibleregistercheck", false).commit();
+                    binding.etregisterpwcheck.setSelection(length);
+                    SignInActivity.editor.putBoolean("visibleregistercheck", false).commit();
                 }
             }
         });
 
+        // register 버튼 클릭 리스너
         binding.btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int id = binding.etregisterId.getText().length();
+                String pw = binding.etregisterPw.getText().toString();
+                int key = binding.etregistersecretKey.getText().length();
+                String pwre = binding.etregisterpwcheck.getText().toString();
 
-                if(binding.etregisterId.getText().length() == 0)
+                if((id == 0 && pw.length() != 0 && key != 0 && pwre.length() != 0) ||
+                        (id == 0 && pw.length() == 0 && key == 0 && pwre.length() == 0)) {
                     Toast.makeText(SignupActivity.this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show();
-                else if(binding.etregisterPw.getText().length() == 0)
+                } else if(id != 0 && pw.length() == 0 && key != 0 && pwre.length() != 0) {
                     Toast.makeText(SignupActivity.this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
-                else if(binding.etregistersecretKey.getText().length() == 0)
+                } else if(id != 0 && pw.length() != 0 && key == 0 && pwre.length() != 0) {
                     Toast.makeText(SignupActivity.this, "가입코드를 입력해주세요", Toast.LENGTH_SHORT).show();
-                else if(binding.etregisterPw.getText().toString().equals(binding.etregisterpwcheck.getText().toString()) == false)
+                } else if(pw.equals(pwre) == false) {
                     Toast.makeText(SignupActivity.this, "비밀번호가 다릅니다", Toast.LENGTH_SHORT).show();
-                else{
-                    signUP();
+                } else{
+                    signUp();
                 }
             }
         });
 
+        // login TextView 클릭 리스너
         binding.tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,16 +127,14 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
-    private void signUP(){
+    private void signUp(){
         String userId = binding.etregisterId.getText().toString();
         String password = binding.etregisterPw.getText().toString();
         String secretKey = binding.etregistersecretKey.getText().toString();
 
         SignUpRequest signupRequest = new SignUpRequest(userId, password);
 
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-
-        serverApi.signup(secretKey, signupRequest).enqueue(new Callback<Void>() {
+        SignInActivity.serverApi.signUp(secretKey, signupRequest).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful())

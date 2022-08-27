@@ -26,6 +26,7 @@ public class PostActivity extends AppCompatActivity {
         binding = ActivityPostBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // 완료 버튼 클릭 리스너
         binding.btPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,24 +37,22 @@ public class PostActivity extends AppCompatActivity {
 
     }
 
+    // 글쓰기 null 확인 메서드
     private void postCheck() {
-        int title = binding.etTitle.getText().length();
-        int content = binding.etContent.getText().length();
-        
-        if(title != 0 && content != 0) post();
-        else if(title == 0 && content != 0) Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_SHORT).show();
-        else if(title != 0 && content == 0) Toast.makeText(this, "내용을 입력해주세요", Toast.LENGTH_SHORT).show();
-        else if(title == 0 && content == 0) Toast.makeText(this, "제목과 내용을 입력해주세요", Toast.LENGTH_SHORT).show();
-    }
-
-    private void post() {
         String title = binding.etTitle.getText().toString();
         String content = binding.etContent.getText().toString();
+        
+        if(title.length() != 0 && content.length() != 0) post(title, content);
+        else if(title.length() == 0 && content.length() != 0) Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_SHORT).show();
+        else if(title.length() != 0 && content.length() == 0) Toast.makeText(this, "내용을 입력해주세요", Toast.LENGTH_SHORT).show();
+        else if(title.length() == 0 && content.length() == 0) Toast.makeText(this, "제목과 내용을 입력해주세요", Toast.LENGTH_SHORT).show();
+    }
 
+    // 글쓰기 메서드
+    private void post(String title, String content) {
         PostRequest postRequest = new PostRequest(title, content);
 
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-        serverApi.post(SignInActivity.accessToken, postRequest).enqueue(new Callback<Void>() {
+        SignInActivity.serverApi.post(SignInActivity.accessToken, postRequest).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){

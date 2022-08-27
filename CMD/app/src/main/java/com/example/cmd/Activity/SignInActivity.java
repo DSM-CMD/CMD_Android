@@ -23,6 +23,10 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     private ActivitySigninBinding binding;
+    private String userId;
+    private String userPw;
+    public static ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
+
     public static String accessToken;
 
     public static SharedPreferences preferences;
@@ -38,51 +42,80 @@ public class SignInActivity extends AppCompatActivity {
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
         editor = preferences.edit();
 
+        // visible 이미지 클릭 리스너
         binding.ivvisible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(preferences.getBoolean("visible", false) == false) {
+                boolean visible = preferences.getBoolean("visible", false);
+                int length = binding.etPw.length();
+
+                if(visible == false) {
                     binding.ivvisible.setImageResource(R.drawable.ic_baseline_visibility_24);
                     binding.etPw.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
-                    binding.etPw.setSelection(binding.etPw.getText().length());
+                    binding.etPw.setSelection(length);
                     editor.putBoolean("visible", true).commit();
-                }else if(preferences.getBoolean("visible", false) == true){
+                }else if(visible == true){
                     binding.ivvisible.setImageResource(R.drawable.ic_baseline_visibility_off_24);
                     binding.etPw.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    binding.etPw.setSelection(binding.etPw.getText().length());
+                    binding.etPw.setSelection(length);
                     editor.putBoolean("visible", false).commit();
                 }
             }
         });
 
-        if(preferences.getInt("Check", 0) == 1){
+        // 자동 로그인 시 설정
+        if(preferences.getBoolean("Check", false) == true){
+           setAutoLogin();
             binding.cbautlLogin.setChecked(true);
             binding.etId.setText(preferences.getString("Id", ""));
             binding.etPw.setText(preferences.getString("Pw", ""));
+        }
 
-            String userId = binding.etId.getText().toString();
-            String userPw = binding.etPw.getText().toString();
+        // textview 클릭 리스너
+        binding.tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        // 로그인 버튼 클릭 리스너
+        binding.btLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+            }
+        });
+    }
+
+    private void signIn(){
+        userId = binding.etId.getText().toString();
+        userPw = binding.etPw.getText().toString();
+
+        if((userId.length() == 0 && userPw.length() !=0) ||
+                (userId.length() == 0 && userPw.length() == 0)){
+            Toast.makeText(SignInActivity.this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show();
+        } else if(userId.length() != 0 && userPw.length() == 0){
+            Toast.makeText(SignInActivity.this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+        }  else {
             SignInRequest signInRequest = new SignInRequest(userId, userPw);
 
-            ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-
-            serverApi.signin(signInRequest).enqueue(new Callback<SignInResponse>() {
+            serverApi.signIn(signInRequest).enqueue(new Callback<SignInResponse>() {
                 @Override
                 public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                     if(response.isSuccessful()){
 
-                        Toast.makeText(SignInActivity.this, "로그인에 성공했습니다!", Toast.LENGTH_SHORT).show();
-
                         accessToken = response.body().getAccessToken();
 
-
                         if(binding.cbautlLogin.isChecked()){
-                            editor.putInt("Check", 1).commit();
-                            editor.putString("Id", binding.etId.getText().toString()).commit();
-                            editor.putString("Pw", binding.etPw.getText().toString()).commit();
+                            editor.putBoolean("Check", true).commit();
                         }
-                        
+
+                        editor.putString("Id", userId).commit();
+                        editor.putString("Pw", userPw).commit();
+
+                        Toast.makeText(SignInActivity.this, "로그인에 성공했습니다!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);
                         startActivity(intent);
                         finish();
@@ -92,51 +125,19 @@ public class SignInActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<SignInResponse> call, Throwable t) {
-
+                    Toast.makeText(SignInActivity.this, "관리자에게 문의해주세요", Toast.LENGTH_SHORT).show();
                 }
             });
-
-        }else binding.cbautlLogin.setChecked(false);
-
-        binding.etId.setSelection(binding.etId.getText().length());
-
-        binding.tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        binding.btLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                signinCheck();
-            }
-        });
-    }
-
-    private void signinCheck(){
-        if(binding.etId.getText().length() == 0)
-            Toast.makeText(SignInActivity.this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show();
-        else if(binding.etPw.getText().length() == 0){
-            Toast.makeText(SignInActivity.this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            signIn();
         }
     }
 
-    private void signIn(){
-        String userId = binding.etId.getText().toString();
-        String password = binding.etPw.getText().toString();
+    private void setAutoLogin(){
+        userId = binding.etId.getText().toString();
+        userPw = binding.etPw.getText().toString();
 
-        SignInRequest signInRequest = new SignInRequest(userId, password);
+        SignInRequest signInRequest = new SignInRequest(userId, userPw);
 
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-
-        serverApi.signin(signInRequest).enqueue(new Callback<SignInResponse>() {
+        serverApi.signIn(signInRequest).enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if(response.isSuccessful()){
@@ -144,26 +145,23 @@ public class SignInActivity extends AppCompatActivity {
                     accessToken = response.body().getAccessToken();
 
                     if(binding.cbautlLogin.isChecked()){
-                        editor.putInt("Check", 1).commit();
-                        editor.putString("Id", binding.etId.getText().toString()).commit();
-                        editor.putString("Pw", binding.etPw.getText().toString()).commit();
+                        editor.putBoolean("Check", true).commit();
+                        editor.putString("Id", userId).commit();
+                        editor.putString("Pw", userPw).commit();
                     }
 
+                    Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);
+                    startActivity(intent);
+                    finish();
 
                     Toast.makeText(SignInActivity.this, "로그인에 성공했습니다!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);
-                    finish();
-                    startActivity(intent);
-
-                    editor.putString("Id", binding.etId.getText().toString()).commit();
-                    editor.putString("Pw", binding.etPw.getText().toString()).commit();
 
                 }
             }
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
-                Toast.makeText(SignInActivity.this, "Server is closed", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

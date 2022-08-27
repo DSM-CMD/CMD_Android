@@ -7,14 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Activity.SignInActivity;
-import com.example.cmd.R;
 import com.example.cmd.RecyclerView.StudentAdapter;
 import com.example.cmd.Response.StudentInfoResponse;
+import com.example.cmd.databinding.FragmentStudentinfoBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,8 @@ import retrofit2.Response;
 
 public class StudentInfoFragment extends Fragment {
 
-    private RecyclerView recyclerView;
+    private FragmentStudentinfoBinding binding;
+
     private GridLayoutManager gridLayoutManager;
     private StudentAdapter studentAdapter;
     List<StudentInfoResponse> list;
@@ -34,20 +32,17 @@ public class StudentInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ViewGroup rootView = (ViewGroup)inflater.inflate(R.layout.fragment_studentinfo, container, false);
+        binding = FragmentStudentinfoBinding.inflate(getLayoutInflater(), container, false);
 
         list = new ArrayList<>();
-        recyclerView = rootView.findViewById(R.id.studentrecyclerview);
         gridLayoutManager= new GridLayoutManager(getActivity(), 3);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        binding.studentrecyclerview.setLayoutManager(gridLayoutManager);
 
         studentAdapter = new StudentAdapter(list);
 
-        recyclerView.setAdapter(studentAdapter);
+        binding.studentrecyclerview.setAdapter(studentAdapter);
 
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-
-        serverApi.studentinfo(SignInActivity.accessToken).enqueue(new Callback<List<StudentInfoResponse>>() {
+        SignInActivity.serverApi.studentInfo(SignInActivity.accessToken).enqueue(new Callback<List<StudentInfoResponse>>() {
             @Override
             public void onResponse(Call<List<StudentInfoResponse>> call, Response<List<StudentInfoResponse>> response) {
                 if(response.isSuccessful()){
@@ -61,6 +56,6 @@ public class StudentInfoFragment extends Fragment {
             }
         });
 
-        return rootView;
+        return binding.getRoot();
     }
 }

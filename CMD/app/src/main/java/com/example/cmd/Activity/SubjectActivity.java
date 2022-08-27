@@ -33,8 +33,8 @@ public class SubjectActivity extends Activity {
 
         Intent intent = getIntent();
 
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-        serverApi.subject(SignInActivity.accessToken, intent.getIntExtra("Number", 0)).enqueue(new Callback<SubjectResponse>() {
+        // 수업 정보 조회
+        SignInActivity.serverApi.subject(SignInActivity.accessToken, intent.getIntExtra("Number", 0)).enqueue(new Callback<SubjectResponse>() {
             @Override
             public void onResponse(Call<SubjectResponse> call, Response<SubjectResponse> response) {
                 if(response.isSuccessful()){
@@ -50,6 +50,7 @@ public class SubjectActivity extends Activity {
             }
         });
 
+        // X 이미지 클릭 리스너
         binding.ivno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

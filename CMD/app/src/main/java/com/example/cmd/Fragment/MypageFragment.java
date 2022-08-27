@@ -12,8 +12,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Activity.InfoUpdateActivity;
 import com.example.cmd.Activity.SignInActivity;
 import com.example.cmd.Response.MyInfoResponse;
@@ -36,6 +34,7 @@ public class MypageFragment extends Fragment {
 
         mypage();
 
+        // 정보 수정 버튼 클릭 리스너
         binding.cbchangeInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +44,7 @@ public class MypageFragment extends Fragment {
             }
         });
 
+        // 로그아웃 버튼 클릭 리스너
         binding.cbLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,10 +80,9 @@ public class MypageFragment extends Fragment {
         return binding.getRoot();
     }
 
+    // 내 정보 조회 메서드
     private void mypage() {
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-
-        serverApi.myinfo(SignInActivity.accessToken).enqueue(new Callback<MyInfoResponse>() {
+        SignInActivity.serverApi.myInfo(SignInActivity.accessToken).enqueue(new Callback<MyInfoResponse>() {
             @Override
             public void onResponse(Call<MyInfoResponse> call, Response<MyInfoResponse> response) {
                 if(response.isSuccessful()){
@@ -92,6 +91,9 @@ public class MypageFragment extends Fragment {
                     binding.tvmyNumber.setText(response.body().getNumber());
                     binding.tvmyBirth.setText(response.body().getBirthday());
                     binding.tvmyMajor.setText(response.body().getField());
+
+                    SignInActivity.editor.putString("Birth", response.body().getBirthday());
+                    SignInActivity.editor.putString("Major", response.body().getField());
                 }
             }
 
@@ -102,6 +104,7 @@ public class MypageFragment extends Fragment {
         });
     }
 
+    // Resume 상태에서 mypage 호출
     @Override
     public void onResume() {
         super.onResume();

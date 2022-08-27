@@ -39,9 +39,6 @@ public class LobbyActivity extends AppCompatActivity {
         pagerAdapter = new ScreeSlidePagerAdapter(this);
         binding.pager.setAdapter(pagerAdapter);
 
-        FragmentTransaction transaction;
-        transaction = fragmentManager.beginTransaction();
-
         binding.pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -49,7 +46,6 @@ public class LobbyActivity extends AppCompatActivity {
                 binding.bottomNavigationView.getMenu().getItem(position).setChecked(true);
             }
         });
-
 
         binding.bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
@@ -60,17 +56,16 @@ public class LobbyActivity extends AppCompatActivity {
                 switch (id){
                     case R.id.timetable:
                          binding.pager.setCurrentItem(0);
-                        break;
+                         break;
                     case R.id.studentinfo:
                          binding.pager.setCurrentItem(1);
-                        break;
+                         break;
                     case R.id.noticeboard:
                          binding.pager.setCurrentItem(2);
-                        break;
+                         break;
                     case R.id.mypage:
                          binding.pager.setCurrentItem(3);
-                        break;
-
+                         break;
                 }
                 return true;
             }
@@ -85,12 +80,16 @@ public class LobbyActivity extends AppCompatActivity {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            if (position == 0) return new TimetableFragment();
-            else if (position == 1) return new StudentInfoFragment();
-            else if (position == 2) return new NoticeBoardFragment();
-            else return new MypageFragment();
+            if (position == 0){
+                return new TimetableFragment();
+            } else if (position == 1){
+                return new StudentInfoFragment();
+            } else if (position == 2){
+                return new NoticeBoardFragment();
+            } else{
+                return new MypageFragment();
+            }
         }
-
 
         @Override
         public int getItemCount() {

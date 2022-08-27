@@ -1,28 +1,18 @@
 
 package com.example.cmd.Fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
-import androidx.appcompat.widget.AppCompatButton$InspectionCompanion;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.cmd.Activity.PostActivity;
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Activity.SignInActivity;
-import com.example.cmd.R;
 import com.example.cmd.RecyclerView.NoticeAdapter;
 import com.example.cmd.RecyclerView.PostAdapter;
 import com.example.cmd.Response.NoticeResponse;
@@ -38,13 +28,12 @@ import retrofit2.Response;
 
 public class NoticeBoardFragment extends Fragment {
 
-    private LinearLayoutManager linearLayoutManager;
+    private LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
     private NoticeAdapter noticeAdapter;
     private PostAdapter postAdapter;
-    private ServerApi serverApi;
     private FragmentNoticeBoardBinding binding;
-    List<NoticeResponse> noticelist;
-    List<UserPostResponse> userpostlist;
+    List<NoticeResponse> noticelist = new ArrayList<>();
+    List<UserPostResponse> userpostlist = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,52 +43,27 @@ public class NoticeBoardFragment extends Fragment {
 
         binding.cbpost.setElevation(0);
 
-        noticelist = new ArrayList<>();
-        userpostlist = new ArrayList<>();
-
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-
         binding.noticerecyclerview.setLayoutManager(linearLayoutManager);
 
-        serverApi = ApiProvider.getInstance().create(ServerApi.class);
+        setAuth();
 
-        if(SignInActivity.preferences.getBoolean("Switch", false) == false){
-            binding.teacher.setTextColor(Color.WHITE);
-            binding.student.setTextColor(Color.parseColor("#676767"));
-            binding.textview.setText("공지사항");
-            binding.cbpost.setCardBackgroundColor(Color.parseColor("#232323"));
-            noticeAdapter = new NoticeAdapter(noticelist);
-            binding.noticerecyclerview.setAdapter(noticeAdapter);
-            notice();
-        }else{
-            binding.student.setTextColor(Color.WHITE);
-            binding.teacher.setTextColor(Color.parseColor("#676767"));
-            binding.textview.setText("게시판");
-            binding.cbpost.setCardBackgroundColor(Color.WHITE);
-            postAdapter = new PostAdapter(userpostlist);
-            binding.noticerecyclerview.setAdapter(postAdapter);
-            userpost();
-        }
-
+        // Teacher TextView 클릭 리스너
         binding.teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(SignInActivity.preferences.getBoolean("Switch", false) == true) {
+                if(auth() == true) {
                     binding.teacher.setTextColor(Color.WHITE);
                     binding.student.setTextColor(Color.parseColor("#676767"));
                     SignInActivity.editor.putBoolean("Switch", false).commit();
                     binding.textview.setText("공지사항");
                     binding.cbpost.setCardBackgroundColor(Color.parseColor("#232323"));
                     userpostlist.clear();
-                    noticeAdapter = new NoticeAdapter(noticelist);
-                    binding.noticerecyclerview.setAdapter(noticeAdapter);
                     notice();
-                    Log.d("Test", "success");
-
                 }
             }
         });
 
+        // Student TextView 클릭 리스너
         binding.student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,15 +74,12 @@ public class NoticeBoardFragment extends Fragment {
                     binding.textview.setText("게시판");
                     binding.cbpost.setCardBackgroundColor(Color.WHITE);
                     noticelist.clear();
-                    postAdapter = new PostAdapter(userpostlist);
-                    binding.noticerecyclerview.setAdapter(postAdapter);
-                    userpost();
-                    postAdapter.notifyDataSetChanged();
-                }
+                    userpost();}
             }
         });
 
-        if(SignInActivity.preferences.getBoolean("Switch", false) == true){
+        // post 클릭 리스너
+        if(auth() == true){
             binding.cbpost.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -131,8 +92,28 @@ public class NoticeBoardFragment extends Fragment {
         return binding.getRoot();
     }
 
+    // 초기 교사 / 학생 설정
+    private void setAuth() {
+        if(auth() == false){
+            binding.teacher.setTextColor(Color.WHITE);
+            binding.student.setTextColor(Color.parseColor("#676767"));
+            binding.textview.setText("공지사항");
+            binding.cbpost.setCardBackgroundColor(Color.parseColor("#232323"));
+            notice();
+        }else{
+            binding.student.setTextColor(Color.WHITE);
+            binding.teacher.setTextColor(Color.parseColor("#676767"));
+            binding.textview.setText("게시판");
+            binding.cbpost.setCardBackgroundColor(Color.WHITE);
+            userpost();
+        }
+    }
+
+    // 공지사항 조회 메서드
     private void notice(){
-        serverApi.notice(SignInActivity.accessToken).enqueue(new Callback<List<NoticeResponse>>() {
+        noticeAdapter = new NoticeAdapter(noticelist);
+        binding.noticerecyclerview.setAdapter(noticeAdapter);
+        SignInActivity.serverApi.notice(SignInActivity.accessToken).enqueue(new Callback<List<NoticeResponse>>() {
             @Override
             public void onResponse(Call<List<NoticeResponse>> call, Response<List<NoticeResponse>> response) {
                 if (response.isSuccessful()) {
@@ -147,8 +128,11 @@ public class NoticeBoardFragment extends Fragment {
         });
     }
 
+    // 유저 게시글 조회 메서드
     private void userpost(){
-        serverApi.userpost(SignInActivity.accessToken).enqueue(new Callback<List<UserPostResponse>>() {
+        postAdapter = new PostAdapter(userpostlist);
+        binding.noticerecyclerview.setAdapter(postAdapter);
+        SignInActivity.serverApi.userPost(SignInActivity.accessToken).enqueue(new Callback<List<UserPostResponse>>() {
             @Override
             public void onResponse(Call<List<UserPostResponse>> call, Response<List<UserPostResponse>> response) {
                 if(response.isSuccessful()){
@@ -161,5 +145,11 @@ public class NoticeBoardFragment extends Fragment {
             public void onFailure(Call<List<UserPostResponse>> call, Throwable t) {
             }
         });
+    }
+
+    // preferences 값 조회
+    private boolean auth(){
+        boolean auth = SignInActivity.preferences.getBoolean("Switch", false);
+        return auth;
     }
 }

@@ -29,16 +29,16 @@ import retrofit2.Response;
 public class TimetableFragment extends Fragment {
 
     private FragmentTimetableBinding binding;
-    private int direction;
-    private Calendar calendar;
+    private Calendar calendar = Calendar.getInstance();
+    private String korean = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA);
+    private String us = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US);
+    private String format = new SimpleDateFormat("MM월 dd일 " + korean + "요일").format(calendar.getTime());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         binding = FragmentTimetableBinding.inflate(getLayoutInflater(), container, false);
-
-        direction = 0;
 
         timetable();
 
@@ -52,14 +52,13 @@ public class TimetableFragment extends Fragment {
             }
         });
 
+        // 전 날 시간표 조회
         binding.ivleft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
                 calendar.add(Calendar.DATE, -1);
-                String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
                 binding.tvdate.setText(format);
-                serverApi.timetable(SignInActivity.accessToken, calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
+                SignInActivity.serverApi.timetable(SignInActivity.accessToken, us).enqueue(new Callback<TimetableResponse>() {
                     @Override
                     public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                         if(response.isSuccessful()){
@@ -67,25 +66,18 @@ public class TimetableFragment extends Fragment {
                             binding.tvperiod02.setText(response.body().getPeriod2nd());
                             binding.tvperiod03.setText(response.body().getPeriod3th());
                             binding.tvperiod04.setText(response.body().getPeriod4th());
+                            binding.tvlaunch.setText("점심시간");
                             binding.tvperiod05.setText(response.body().getPeriod5th());
                             binding.tvperiod06.setText(response.body().getPeriod6th());
                             binding.tvperiod07.setText(response.body().getPeriod7th());
                             binding.tvperiod08.setText(response.body().getPeriod8th());
+                            binding.tvdinner.setText("저녁시간");
                             binding.tvperiod09.setText(response.body().getPeriod9th());
                             binding.tvperiod10.setText(response.body().getPeriod10th());
 
                             setperiod();
                         }else if(response.code() == 500){
-                            binding.tvperiod01.setText("시");
-                            binding.tvperiod02.setText("간");
-                            binding.tvperiod03.setText("표");
-                            binding.tvperiod04.setText("가");
-                            binding.tvperiod05.setText("없");
-                            binding.tvperiod06.setText("어");
-                            binding.tvperiod07.setText("용");
-                            binding.tvperiod08.setText("!");
-                            binding.tvperiod09.setText("!");
-                            binding.tvperiod10.setText("!");
+                           notimetable();
                         }
                     }
 
@@ -99,14 +91,13 @@ public class TimetableFragment extends Fragment {
             }
         });
 
+        // 다음 날 시간표 조회
         binding.ivright.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
                 calendar.add(Calendar.DATE, 1);
-                String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
                 binding.tvdate.setText(format);
-                serverApi.timetable(SignInActivity.accessToken, calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
+                SignInActivity.serverApi.timetable(SignInActivity.accessToken, us).enqueue(new Callback<TimetableResponse>() {
                     @Override
                     public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                         if(response.isSuccessful()){
@@ -123,16 +114,7 @@ public class TimetableFragment extends Fragment {
 
                             setperiod();
                         }else if(response.code() == 500){
-                            binding.tvperiod01.setText("시");
-                            binding.tvperiod02.setText("간");
-                            binding.tvperiod03.setText("표");
-                            binding.tvperiod04.setText("가");
-                            binding.tvperiod05.setText("없");
-                            binding.tvperiod06.setText("어");
-                            binding.tvperiod07.setText("용");
-                            binding.tvperiod08.setText("!");
-                            binding.tvperiod09.setText("!");
-                            binding.tvperiod10.setText("!");
+                            notimetable();
                         }
                     }
 
@@ -149,6 +131,7 @@ public class TimetableFragment extends Fragment {
         return binding.getRoot();
     }
 
+    // 1교시 ~ 10교시 텍스트 설정
     private void setperiod() {
         binding.period01.setText("1교시");
         binding.period02.setText("2교시");
@@ -162,13 +145,10 @@ public class TimetableFragment extends Fragment {
         binding.period10.setText("10교시");
     }
 
+    // 시간표 조회 함수
     private void timetable(){
-        calendar = Calendar.getInstance();
-
-        String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
-
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-        serverApi.timetable(SignInActivity.accessToken,  calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
+        binding.tvdate.setText(format);
+        SignInActivity.serverApi.timetable(SignInActivity.accessToken, us).enqueue(new Callback<TimetableResponse>() {
             @Override
             public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                 if(response.isSuccessful()){
@@ -203,204 +183,147 @@ public class TimetableFragment extends Fragment {
             public void onFailure(Call<TimetableResponse> call, Throwable t) {
             }
         });
-        binding.tvdate.setText(format);
     }
 
+    // 시간표가 없을때
+    private void notimetable(){
+        binding.tvperiod01.setText("시");
+        binding.tvperiod02.setText("간");
+        binding.tvperiod03.setText("표");
+        binding.tvperiod04.setText("가");
+        binding.tvperiod05.setText("없");
+        binding.tvperiod06.setText("어");
+        binding.tvperiod07.setText("용");
+        binding.tvperiod08.setText("!");
+        binding.tvperiod09.setText("!");
+        binding.tvperiod10.setText("!");
+    }
+
+    // 시간표 클릭 리스너
     private void clicklistener() {
         binding.cvperiod01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int number = 0;
-                if(binding.tvperiod01.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod01.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod01.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod01.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod01.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod01.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod01.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod01.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod01.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod01.getText().toString().equals("창체") == true){
-                    number = 10;
+                String period01 = binding.tvperiod01.getText().toString();
+
+                switch(period01) {
+                    case "국어" : number = 1; break;
+                    case "수학" : number = 2; break;
+                    case "사회" : number = 3; break;
+                    case "과학" : number = 4; break;
+                    case "영어" : number = 5; break;
+                    case "음악" : number = 6; break;
+                    case "C++" : number = 7; break;
+                    case "자료구조" : number = 8; break;
+                    case "체육" : number =  9; break;
+                    case "창체" : number =  10; break;
                 }
-                if(!(binding.tvperiod01.getText().equals("전공동아리")) ||
-                        !(binding.tvperiod01.getText().equals("방과후")) ||
-                        !(binding.tvperiod01.getText().equals("자습"))){
-                    Intent intent = new Intent(getActivity(), SubjectActivity.class);
-                    intent.putExtra("Number", number);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(getActivity(), SubjectActivity.class);
+                intent.putExtra("Number", number);
+                startActivity(intent);
             }
         });
         binding.cvperiod02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int number = 0;
-                if(binding.tvperiod02.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod02.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod02.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod02.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod02.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod02.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod02.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod02.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod02.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod02.getText().toString().equals("창체") == true){
-                    number = 10;
+                switch(binding.tvperiod02.getText().toString()) {
+                    case "국어" : number = 1; break;
+                    case "수학" : number = 2; break;
+                    case "사회" : number = 3; break;
+                    case "과학" : number = 4; break;
+                    case "영어" : number = 5; break;
+                    case "음악" : number = 6; break;
+                    case "C++" : number = 7; break;
+                    case "자료구조" : number = 8; break;
+                    case "체육" : number = 9; break;
+                    case "창체" : number = 10; break;
                 }
-                if(!(binding.tvperiod02.getText().equals("전공동아리")) ||
-                        !(binding.tvperiod02.getText().equals("방과후")) ||
-                        !(binding.tvperiod02.getText().equals("자습"))){
-                    Intent intent = new Intent(getActivity(), SubjectActivity.class);
-                    intent.putExtra("Number", number);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(getActivity(), SubjectActivity.class);
+                intent.putExtra("Number", number);
+                startActivity(intent);
+
             }
         });
         binding.cvperiod03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int number = 0;
-                if(binding.tvperiod03.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod03.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod03.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod03.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod03.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod03.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod03.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod03.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod03.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod03.getText().toString().equals("창체") == true){
-                    number = 10;
+                switch(binding.tvperiod03.getText().toString()) {
+                    case "국어" : number = 1; break;
+                    case "수학" : number = 2; break;
+                    case "사회" : number = 3; break;
+                    case "과학" : number = 4; break;
+                    case "영어" : number = 5; break;
+                    case "음악" : number = 6; break;
+                    case "C++" : number = 7; break;
+                    case "자료구조" : number = 8; break;
+                    case "체육" : number = 9; break;
+                    case "창체" : number = 10; break;
                 }
-                if(!(binding.tvperiod03.getText().equals("전공동아리")) ||
-                        !(binding.tvperiod03.getText().equals("방과후")) ||
-                        !(binding.tvperiod03.getText().equals("자습"))){
-                    Intent intent = new Intent(getActivity(), SubjectActivity.class);
-                    intent.putExtra("Number", number);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(getActivity(), SubjectActivity.class);
+                intent.putExtra("Number", number);
+                startActivity(intent);
             }
         });
         binding.cvperiod04.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int number = 0;
-                if(binding.tvperiod04.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod04.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod04.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod04.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod04.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod04.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod04.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod04.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod04.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod04.getText().toString().equals("창체") == true){
-                    number = 10;
+                switch(binding.tvperiod04.getText().toString()) {
+                    case "국어" : number = 1; break;
+                    case "수학" : number = 2; break;
+                    case "사회" : number = 3; break;
+                    case "과학" : number = 4; break;
+                    case "영어" : number = 5; break;
+                    case "음악" : number = 6; break;
+                    case "C++" : number = 7; break;
+                    case "자료구조" : number = 8; break;
+                    case "체육" : number = 9; break;
+                    case "창체" : number = 10; break;
                 }
-                if(!(binding.tvperiod04.getText().equals("전공동아리")) ||
-                        !(binding.tvperiod04.getText().equals("방과후")) ||
-                        !(binding.tvperiod04.getText().equals("자습"))){
-                    Intent intent = new Intent(getActivity(), SubjectActivity.class);
-                    intent.putExtra("Number", number);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(getActivity(), SubjectActivity.class);
+                intent.putExtra("Number", number);
+                startActivity(intent);
             }
         });
         binding.cvperiod05.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int number = 0;
-                if(binding.tvperiod05.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod05.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod05.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod05.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod05.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod05.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod05.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod05.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod05.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod05.getText().toString().equals("창체") == true){
-                    number = 10;
+                switch(binding.tvperiod01.getText().toString()) {
+                    case "국어" : number = 1; break;
+                    case "수학" : number = 2; break;
+                    case "사회" : number = 3; break;
+                    case "과학" : number = 4; break;
+                    case "영어" : number = 5; break;
+                    case "음악" : number = 6; break;
+                    case "C++" : number = 7; break;
+                    case "자료구조" : number = 8; break;
+                    case "체육" : number = 9; break;
+                    case "창체" : number = 10; break;
                 }
-                if(!(binding.tvperiod05.getText().equals("전공동아리")) ||
-                        !(binding.tvperiod05.getText().equals("방과후")) ||
-                        !(binding.tvperiod01.getText().equals("자습"))){
-                    Intent intent = new Intent(getActivity(), SubjectActivity.class);
-                    intent.putExtra("Number", number);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(getActivity(), SubjectActivity.class);
+                intent.putExtra("Number", number);
+                startActivity(intent);
             }
         });
         binding.cvperiod06.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int number = 0;
-                if(binding.tvperiod06.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod06.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod06.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod06.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod06.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod06.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod06.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod06.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod06.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod06.getText().toString().equals("창체") == true){
-                    number = 10;
+                switch(binding.tvperiod06.getText().toString()) {
+                    case "국어" : number = 1; break;
+                    case "수학" : number = 2; break;
+                    case "사회" : number = 3; break;
+                    case "과학" : number = 4; break;
+                    case "영어" : number = 5; break;
+                    case "음악" : number = 6; break;
+                    case "C++" : number = 7; break;
+                    case "자료구조" : number = 8; break;
+                    case "체육" : number = 9; break;
+                    case "창체" : number = 10; break;
                 }
                 if(binding.tvperiod06.getText().equals("전공동아리") == false){
                     Intent intent = new Intent(getActivity(), SubjectActivity.class);
@@ -413,112 +336,22 @@ public class TimetableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 int number = 0;
-                if(binding.tvperiod07.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod07.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod07.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod07.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod07.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod07.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod07.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod07.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod07.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod07.getText().toString().equals("창체") == true){
-                    number = 10;
+                switch(binding.tvperiod07.getText().toString()) {
+                    case "국어" : number = 1; break;
+                    case "수학" : number = 2; break;
+                    case "사회" : number = 3; break;
+                    case "과학" : number = 4; break;
+                    case "영어" : number = 5; break;
+                    case "음악" : number = 6; break;
+                    case "C++" : number = 7; break;
+                    case "자료구조" : number = 8; break;
+                    case "체육" : number = 9; break;
+                    case "창체" : number = 10; break;
                 }
                 if(binding.tvperiod07.getText().equals("전공동아리") == false){
                     Intent intent = new Intent(getActivity(), SubjectActivity.class);
                     intent.putExtra("Number", number);
                     startActivity(intent);
-                }
-            }
-        });
-        binding.cvperiod08.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int number = 0;
-                if(binding.tvperiod08.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod08.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod08.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod08.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod08.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod08.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod08.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod08.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod08.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod08.getText().toString().equals("창체") == true){
-                    number = 10;
-                }
-            }
-        });
-        binding.cvperiod09.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int number = 0;
-                if(binding.tvperiod09.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod09.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod09.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod09.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod09.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod09.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod09.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod09.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod09.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod09.getText().toString().equals("창체") == true){
-                    number = 10;
-                }
-            }
-        });
-        binding.cvperiod10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int number = 0;
-                if(binding.tvperiod10.getText().toString().equals("국어") == true){
-                    number = 1;
-                }else if(binding.tvperiod10.getText().toString().equals("수학") == true){
-                    number = 2;
-                }else if(binding.tvperiod10.getText().toString().equals("사회") == true){
-                    number = 3;
-                }else if(binding.tvperiod10.getText().toString().equals("과학") == true){
-                    number = 4;
-                }else if(binding.tvperiod10.getText().toString().equals("영어") == true){
-                    number = 5;
-                }else if(binding.tvperiod10.getText().toString().equals("음악") == true){
-                    number = 6;
-                }else if(binding.tvperiod10.getText().toString().equals("C++") == true){
-                    number = 7;
-                }else if(binding.tvperiod10.getText().toString().equals("자료구조") == true){
-                    number = 8;
-                }else if(binding.tvperiod10.getText().toString().equals("체육") == true){
-                    number = 9;
-                }else if(binding.tvperiod10.getText().toString().equals("창체") == true){
-                    number = 10;
                 }
             }
         });

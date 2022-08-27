@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Response.UserInfoResponse;
 import com.example.cmd.databinding.ActivityDialogBinding;
 
@@ -36,42 +34,41 @@ public class DialogActivity extends Activity {
             }
         });
 
-        changeColor();
-
         Intent intent = getIntent();
         String number = intent.getStringExtra("number");
 
-        ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
-
-        serverApi.userinfo(SignInActivity.accessToken, number).enqueue(new Callback<UserInfoResponse>() {
+        SignInActivity.serverApi.userInfo(SignInActivity.accessToken, number).enqueue(new Callback<UserInfoResponse>() {
             @Override
             public void onResponse(Call<UserInfoResponse> call, Response<UserInfoResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     binding.tvname.setText(response.body().getUsername());
                     binding.tvName.setText(response.body().getUsername());
                     binding.tvNumber.setText(response.body().getNumber());
                     binding.tvBirth.setText(response.body().getBirthday());
                     binding.tvMajor.setText(response.body().getField());
 
-                    if(response.body().getSeatNumber() != null){
-                        if(response.body().getSeatNumber() == 1) binding.position1.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 2) binding.position2.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 3) binding.position3.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 4) binding.position4.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 5) binding.position5.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 6) binding.position6.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 7) binding.position7.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 8) binding.position8.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 9) binding.position9.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 10) binding.position10.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 11) binding.position11.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 12) binding.position12.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 13) binding.position13.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 14) binding.position14.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 15) binding.position15.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 16) binding.position16.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 17) binding.position17.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
-                        if(response.body().getSeatNumber() == 18) binding.position18.setCardBackgroundColor(Color.parseColor("#D9D9D9"));
+                    long seatnumber = response.body().getSeatNumber();
+                    int color = Color.parseColor("#D9D9D9");
+                    switch ((int) seatnumber) {
+                        case 1: binding.position1.setBackgroundColor(color);break;
+                        case 2: binding.position2.setBackgroundColor(color);break;
+                        case 3: binding.position3.setBackgroundColor(color);break;
+                        case 4: binding.position4.setBackgroundColor(color);break;
+                        case 5: binding.position5.setBackgroundColor(color);break;
+                        case 6: binding.position6.setBackgroundColor(color);break;
+                        case 7: binding.position7.setBackgroundColor(color);break;
+                        case 8: binding.position8.setBackgroundColor(color);break;
+                        case 9: binding.position9.setBackgroundColor(color);break;
+                        case 10: binding.position10.setBackgroundColor(color);break;
+                        case 11: binding.position11.setBackgroundColor(color);break;
+                        case 12: binding.position12.setBackgroundColor(color);break;
+                        case 13: binding.position13.setBackgroundColor(color);break;
+                        case 14: binding.position14.setBackgroundColor(color);break;
+                        case 15: binding.position15.setBackgroundColor(color);break;
+                        case 16: binding.position16.setBackgroundColor(color);break;
+                        case 17: binding.position17.setBackgroundColor(color);break;
+                        case 18: binding.position18.setBackgroundColor(color);break;
+
                     }
                 }
             }
@@ -83,26 +80,5 @@ public class DialogActivity extends Activity {
         });
 
 
-    }
-
-    private void changeColor() {
-        binding.position1.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position2.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position3.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position4.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position5.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position6.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position7.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position8.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position9.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position10.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position11.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position12.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position13.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position14.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position15.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position16.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position17.setCardBackgroundColor(Color.parseColor("#585858"));
-        binding.position18.setCardBackgroundColor(Color.parseColor("#585858"));
     }
 }

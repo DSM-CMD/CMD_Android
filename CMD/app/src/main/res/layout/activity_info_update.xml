@@ -4,153 +4,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SignInActivity"
-    android:background="@color/lightblack">
+    android:background="@color/lightblack"
+    tools:context=".Activity.SignInActivity">
 
     <TextView
         android:id="@+id/tvlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비밀번호 변경"
-        android:textSize="50sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/notosans"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="48dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/notosans"
+        android:text="정보 수정"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etupdatePw"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#ABABAB"
         android:hint="*현재 비밀번호"
+        android:inputType="textPassword"
+        android:maxLength="12"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="#ABABAB"
-        android:backgroundTint="#ABABAB"
         android:textCursorDrawable="@color/white"
-        android:maxLines="1"
-        android:maxLength="12"
-        android:singleLine="true"
-        android:inputType="textPassword"
-        android:layout_marginTop="64dp"
-        app:layout_constraintTop_toBottomOf="@id/tvlogin"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvlogin" />
 
     <ImageView
         android:id="@+id/ivupdatevisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="12dp"
         android:src="@drawable/ic_baseline_visibility_off_24"
-        app:layout_constraintRight_toRightOf="@id/etupdatePw"
-        app:layout_constraintBottom_toBottomOf="@id/etupdatePw"/>
+        app:layout_constraintBottom_toBottomOf="@id/etupdatePw"
+        app:layout_constraintRight_toRightOf="@id/etupdatePw" />
 
     <EditText
         android:id="@+id/etupdatenewPw"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#ABABAB"
         android:hint="*새 비밀번호"
+        android:inputType="textPassword"
+        android:maxLength="12"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="#ABABAB"
-        android:backgroundTint="#ABABAB"
         android:textCursorDrawable="@color/white"
-        android:maxLines="1"
-        android:maxLength="12"
-        android:singleLine="true"
-        android:inputType="textPassword"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/etupdatePw"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etupdatePw" />
 
     <ImageView
         android:id="@+id/ivupdatenewvisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="12dp"
         android:src="@drawable/ic_baseline_visibility_off_24"
-        app:layout_constraintRight_toRightOf="@id/etupdatenewPw"
-        app:layout_constraintBottom_toBottomOf="@id/etupdatenewPw"/>
+        app:layout_constraintBottom_toBottomOf="@id/etupdatenewPw"
+        app:layout_constraintRight_toRightOf="@id/etupdatenewPw" />
 
     <EditText
         android:id="@+id/etupdatenewpwCheck"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#ABABAB"
         android:hint="*새 비밀번호 확인"
+        android:inputType="textPassword"
+        android:maxLength="12"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="#ABABAB"
-        android:backgroundTint="#ABABAB"
         android:textCursorDrawable="@color/white"
-        android:maxLines="1"
-        android:maxLength="12"
-        android:singleLine="true"
-        android:inputType="textPassword"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/etupdatenewPw"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etupdatenewPw" />
 
     <ImageView
         android:id="@+id/ivupdatenewcheckvisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="12dp"
         android:src="@drawable/ic_baseline_visibility_off_24"
-        app:layout_constraintRight_toRightOf="@id/etupdatenewpwCheck"
-        app:layout_constraintBottom_toBottomOf="@id/etupdatenewpwCheck"/>
+        app:layout_constraintBottom_toBottomOf="@id/etupdatenewpwCheck"
+        app:layout_constraintRight_toRightOf="@id/etupdatenewpwCheck" />
 
     <EditText
         android:id="@+id/etupdateBirth"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#ABABAB"
         android:hint="생년월일"
+        android:inputType="text"
+        android:maxLength="12"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="#ABABAB"
-        android:backgroundTint="#ABABAB"
         android:textCursorDrawable="@color/white"
-        android:maxLines="1"
-        android:maxLength="12"
-        android:singleLine="true"
-        android:inputType="text"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/etupdatenewpwCheck"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etupdatenewpwCheck" />
 
     <EditText
         android:id="@+id/etupdateMajor"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#ABABAB"
         android:hint="전공"
+        android:maxLength="12"
+        android:maxLines="1"
+        android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="#ABABAB"
-        android:backgroundTint="#ABABAB"
         android:textCursorDrawable="@color/white"
-        android:maxLines="1"
-        android:maxLength="12"
-        android:singleLine="true"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/etupdateBirth"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etupdateBirth" />
 
     <Button
         android:id="@+id/btinfoUpdate"
         android:layout_width="300dp"
         android:layout_height="54dp"
+        android:layout_marginTop="160dp"
         android:background="@drawable/btradius"
         android:text="확인"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_marginTop="160dp"
-        app:layout_constraintTop_toBottomOf="@+id/etupdatenewpwCheck"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etupdatenewpwCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
