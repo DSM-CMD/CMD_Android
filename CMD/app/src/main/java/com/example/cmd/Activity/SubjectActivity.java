@@ -51,7 +51,7 @@ public class SubjectActivity extends Activity {
         });
 
         // X 이미지 클릭 리스너
-        binding.ivno.setOnClickListener(new View.OnClickListener() {
+        binding.ivNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

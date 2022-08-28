@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.cmd.Activity.PostActivity;
 import com.example.cmd.Activity.SignInActivity;
-import com.example.cmd.RecyclerView.NoticeAdapter;
-import com.example.cmd.RecyclerView.PostAdapter;
+import com.example.cmd.R;
+import com.example.cmd.Adapter.NoticeAdapter;
+import com.example.cmd.Adapter.PostAdapter;
 import com.example.cmd.Response.NoticeResponse;
 import com.example.cmd.Response.UserPostResponse;
 import com.example.cmd.databinding.FragmentNoticeBoardBinding;
@@ -47,6 +49,24 @@ public class NoticeBoardFragment extends Fragment {
 
         setAuth();
 
+        if(auth() == false){
+            binding.refreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    notice();
+                    binding.refreshlayout.setRefreshing(false);
+                }
+            });
+        }else{
+            binding.refreshlayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    userpost();
+                    binding.refreshlayout.setRefreshing(false);
+                }
+            });
+        }
+
         // Teacher TextView 클릭 리스너
         binding.teacher.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +94,8 @@ public class NoticeBoardFragment extends Fragment {
                     binding.textview.setText("게시판");
                     binding.cbpost.setCardBackgroundColor(Color.WHITE);
                     noticelist.clear();
-                    userpost();}
+                    userpost();
+                }
             }
         });
 
@@ -98,13 +119,13 @@ public class NoticeBoardFragment extends Fragment {
             binding.teacher.setTextColor(Color.WHITE);
             binding.student.setTextColor(Color.parseColor("#676767"));
             binding.textview.setText("공지사항");
-            binding.cbpost.setCardBackgroundColor(Color.parseColor("#232323"));
+            binding.cbpost.setCardBackgroundColor(Color.parseColor("#00232323"));
             notice();
         }else{
             binding.student.setTextColor(Color.WHITE);
             binding.teacher.setTextColor(Color.parseColor("#676767"));
             binding.textview.setText("게시판");
-            binding.cbpost.setCardBackgroundColor(Color.WHITE);
+            binding.imageview.setImageResource(R.drawable.ic_baseline_add_24);
             userpost();
         }
     }
@@ -117,6 +138,7 @@ public class NoticeBoardFragment extends Fragment {
             @Override
             public void onResponse(Call<List<NoticeResponse>> call, Response<List<NoticeResponse>> response) {
                 if (response.isSuccessful()) {
+                    noticelist.clear();
                     noticelist.addAll(response.body());
                     noticeAdapter.notifyDataSetChanged();
                 }
@@ -136,6 +158,7 @@ public class NoticeBoardFragment extends Fragment {
             @Override
             public void onResponse(Call<List<UserPostResponse>> call, Response<List<UserPostResponse>> response) {
                 if(response.isSuccessful()){
+                    userpostlist.clear();
                     userpostlist.addAll(response.body());
                     postAdapter.notifyDataSetChanged();
                 }
@@ -151,5 +174,15 @@ public class NoticeBoardFragment extends Fragment {
     private boolean auth(){
         boolean auth = SignInActivity.preferences.getBoolean("Switch", false);
         return auth;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(auth() == true){
+            userpost();
+        }else{
+            notice();
+        }
     }
 }

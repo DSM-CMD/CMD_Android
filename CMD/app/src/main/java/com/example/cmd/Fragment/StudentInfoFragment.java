@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.cmd.Activity.SignInActivity;
-import com.example.cmd.RecyclerView.StudentAdapter;
+import com.example.cmd.Adapter.StudentAdapter;
 import com.example.cmd.Response.StudentInfoResponse;
 import com.example.cmd.databinding.FragmentStudentinfoBinding;
 
