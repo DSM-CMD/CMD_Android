@@ -1,4 +1,4 @@
-package com.example.cmd.RecyclerView;
+package com.example.cmd.Adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;

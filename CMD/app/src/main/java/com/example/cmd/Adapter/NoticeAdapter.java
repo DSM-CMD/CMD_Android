@@ -1,18 +1,17 @@
-package com.example.cmd.RecyclerView;
+package com.example.cmd.Adapter;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cmd.Activity.SubjectActivity;
 import com.example.cmd.R;
 import com.example.cmd.Response.NoticeResponse;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,7 +32,6 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.NoticeView
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvtitle);
             tvContent = itemView.findViewById(R.id.tvcontents);
-
         }
     }
 
