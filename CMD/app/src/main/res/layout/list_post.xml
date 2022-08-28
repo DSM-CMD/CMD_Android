@@ -6,11 +6,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/notice"
-        android:layout_width="384dp"
-        android:layout_height="160dp"
+        android:layout_width="368dp"
+        android:layout_height="184dp"
         android:layout_marginTop="16dp"
         android:background="@color/black"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="@color/white"
         android:elevation="8dp"
         app:cardCornerRadius="12dp"
         app:cardUseCompatPadding="true"
@@ -26,16 +26,28 @@
                 android:id="@+id/tvtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="-4dp"
-                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/notosans"
-                android:text="title"
-                android:textColor="@color/white"
+                android:text="Title"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvwriter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-12dp"
+                android:text="writer"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="48dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tvtitle"/>
 
             <TextView
                 android:id="@+id/tvcontents"
@@ -43,9 +55,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-12dp"
                 android:text="contents"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintLeft_toLeftOf="@id/tvtitle"
+                app:layout_constraintRight_toRightOf="@id/tvtitle"
                 app:layout_constraintTop_toBottomOf="@id/tvtitle" />
 
 
