@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,9 +32,6 @@ public class TimetableFragment extends Fragment {
 
     private FragmentTimetableBinding binding;
     private Calendar calendar = Calendar.getInstance();
-    private String korean = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA);
-    private String us = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US);
-    private String format = new SimpleDateFormat("MM월 dd일 " + korean + "요일").format(calendar.getTime());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,8 +56,9 @@ public class TimetableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 calendar.add(Calendar.DATE, -1);
+                String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
                 binding.tvdate.setText(format);
-                SignInActivity.serverApi.timetable(SignInActivity.accessToken, us).enqueue(new Callback<TimetableResponse>() {
+                SignInActivity.serverApi.timetable(SignInActivity.accessToken, calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
                     @Override
                     public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                         if(response.isSuccessful()){
@@ -96,8 +96,10 @@ public class TimetableFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 calendar.add(Calendar.DATE, 1);
+                String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
+                Log.d("Test", "right");
                 binding.tvdate.setText(format);
-                SignInActivity.serverApi.timetable(SignInActivity.accessToken, us).enqueue(new Callback<TimetableResponse>() {
+                SignInActivity.serverApi.timetable(SignInActivity.accessToken, calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
                     @Override
                     public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                         if(response.isSuccessful()){
@@ -105,10 +107,12 @@ public class TimetableFragment extends Fragment {
                             binding.tvperiod02.setText(response.body().getPeriod2nd());
                             binding.tvperiod03.setText(response.body().getPeriod3th());
                             binding.tvperiod04.setText(response.body().getPeriod4th());
+                            binding.tvlaunch.setText("점심시간");
                             binding.tvperiod05.setText(response.body().getPeriod5th());
                             binding.tvperiod06.setText(response.body().getPeriod6th());
                             binding.tvperiod07.setText(response.body().getPeriod7th());
                             binding.tvperiod08.setText(response.body().getPeriod8th());
+                            binding.tvdinner.setText("저녁시간");
                             binding.tvperiod09.setText(response.body().getPeriod9th());
                             binding.tvperiod10.setText(response.body().getPeriod10th());
 
@@ -147,8 +151,9 @@ public class TimetableFragment extends Fragment {
 
     // 시간표 조회 함수
     private void timetable(){
+        String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
         binding.tvdate.setText(format);
-        SignInActivity.serverApi.timetable(SignInActivity.accessToken, us).enqueue(new Callback<TimetableResponse>() {
+        SignInActivity.serverApi.timetable(SignInActivity.accessToken, calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
             @Override
             public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                 if(response.isSuccessful()){

@@ -23,8 +23,7 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     private ActivitySigninBinding binding;
-    private String userId;
-    private String userPw;
+
     public static ServerApi serverApi = ApiProvider.getInstance().create(ServerApi.class);
 
     public static String accessToken;
@@ -42,6 +41,14 @@ public class SignInActivity extends AppCompatActivity {
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
         editor = preferences.edit();
 
+        // 자동 로그인 시 설정
+        if(preferences.getBoolean("Check", false) == true){
+            setAutoLogin();
+            binding.cbautlLogin.setChecked(true);
+            binding.etId.setText(preferences.getString("Id", ""));
+            binding.etPw.setText(preferences.getString("Pw", ""));
+        }
+
         // visible 이미지 클릭 리스너
         binding.ivvisible.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +61,7 @@ public class SignInActivity extends AppCompatActivity {
                     binding.etPw.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
                     binding.etPw.setSelection(length);
                     editor.putBoolean("visible", true).commit();
-                }else if(visible == true){
+                }else if(visible == true) {
                     binding.ivvisible.setImageResource(R.drawable.ic_baseline_visibility_off_24);
                     binding.etPw.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     binding.etPw.setSelection(length);
@@ -62,14 +69,6 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
-
-        // 자동 로그인 시 설정
-        if(preferences.getBoolean("Check", false) == true){
-           setAutoLogin();
-            binding.cbautlLogin.setChecked(true);
-            binding.etId.setText(preferences.getString("Id", ""));
-            binding.etPw.setText(preferences.getString("Pw", ""));
-        }
 
         // textview 클릭 리스너
         binding.tvRegister.setOnClickListener(new View.OnClickListener() {
@@ -90,8 +89,8 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void signIn(){
-        userId = binding.etId.getText().toString();
-        userPw = binding.etPw.getText().toString();
+        String userId = binding.etId.getText().toString();
+        String userPw = binding.etPw.getText().toString();
 
         if((userId.length() == 0 && userPw.length() !=0) ||
                 (userId.length() == 0 && userPw.length() == 0)){
@@ -132,8 +131,8 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void setAutoLogin(){
-        userId = binding.etId.getText().toString();
-        userPw = binding.etPw.getText().toString();
+        String userId = preferences.getString("Id", "");
+        String userPw = preferences.getString("Pw", "");
 
         SignInRequest signInRequest = new SignInRequest(userId, userPw);
 

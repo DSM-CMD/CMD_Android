@@ -56,7 +56,7 @@ public class MypageFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         SignInActivity.editor.putString("Id", "").commit();
                         SignInActivity.editor.putString("Pw", "").commit();
-                        SignInActivity.editor.putInt("Check", 0).commit();
+                        SignInActivity.editor.putBoolean("Check", false).commit();
 
                         Intent intent = new Intent(getActivity(), SignInActivity.class);
                         startActivity(intent);
