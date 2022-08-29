@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.example.cmd.Response.UserInfoResponse;
 import com.example.cmd.databinding.ActivityDialogBinding;
@@ -41,12 +43,15 @@ public class DialogActivity extends Activity {
             @Override
             public void onResponse(Call<UserInfoResponse> call, Response<UserInfoResponse> response) {
                 if (response.isSuccessful()) {
-                    binding.tvname.setText(response.body().getUsername());
-                    binding.tvName.setText(response.body().getUsername());
+                    binding.tvname.setText(response.body().getName());
+                    binding.tvName.setText(response.body().getName());
                     binding.tvNumber.setText(response.body().getNumber());
-                    binding.tvBirth.setText(response.body().getBirthday());
-                    binding.tvMajor.setText(response.body().getField());
 
+                    if(response.body().getBirthday() == null) {
+                        binding.tvBirth.setText("정보없음");
+                    }if(response.body().getField() == null){
+                        binding.tvMajor.setText("정보없음");
+                    }
 
                     int color = Color.parseColor("#D9D9D9");
                     if(response.body().getSeatNumber() != null){

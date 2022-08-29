@@ -95,8 +95,8 @@ public class MypageFragment extends Fragment {
                     binding.tvmyBirth.setText(response.body().getBirthday());
                     binding.tvmyMajor.setText(response.body().getField());
 
-                    SignInActivity.editor.putString("Birth", response.body().getBirthday());
-                    SignInActivity.editor.putString("Major", response.body().getField());
+                    SignInActivity.editor.putString("Birth", response.body().getBirthday()).commit();
+                    SignInActivity.editor.putString("Major", response.body().getField()).commit();
                 }
             }
 
