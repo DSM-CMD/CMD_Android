@@ -17,7 +17,7 @@
             android:id="@+id/cardview"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="24dp"
             app:cardCornerRadius="168dp"
             app:layout_constraintLeft_toLeftOf="parent"

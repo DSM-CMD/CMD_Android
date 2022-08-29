@@ -19,7 +19,7 @@
             android:id="@+id/textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
+            android:layout_marginLeft="16dp"
             android:fontFamily="@font/notosans"
             android:text="공지사항"
             android:textColor="@color/white"
@@ -36,7 +36,7 @@
             android:fontFamily="@font/notosans"
             android:text="교사"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="26dp"
             app:layout_constraintBottom_toBottomOf="@id/student"
             app:layout_constraintRight_toLeftOf="@id/student"
             app:layout_constraintTop_toTopOf="@id/student" />
@@ -46,25 +46,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="32dp"
+            android:layout_marginRight="24dp"
             android:fontFamily="@font/notosans"
             android:text="학생"
             android:textColor="@color/white"
-            android:textSize="28sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toBottomOf="@id/textview"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/textview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refreshlayout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/noticerecyclerview"
@@ -84,6 +84,7 @@
         android:layout_height="64dp"
         android:layout_margin="32dp"
         app:cardCornerRadius="120dp"
+        app:cardBackgroundColor="#CFCFCF"
         app:cardUseCompatPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -92,7 +93,8 @@
             android:id="@+id/imageview"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_add_24" />
 
     </androidx.cardview.widget.CardView>
 

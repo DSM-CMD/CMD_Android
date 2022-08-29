@@ -111,7 +111,7 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="#ABABAB"
         android:hint="생년월일"
-        android:inputType="text"
+        android:inputType="number"
         android:maxLength="12"
         android:maxLines="1"
         android:singleLine="true"
