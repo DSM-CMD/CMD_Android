@@ -32,9 +32,10 @@ public class SubjectActivity extends Activity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
+        int number = intent.getIntExtra("Number", 0);
 
         // 수업 정보 조회
-        SignInActivity.serverApi.subject(SignInActivity.accessToken, intent.getIntExtra("Number", 0)).enqueue(new Callback<SubjectResponse>() {
+        SignInActivity.serverApi.subject(SignInActivity.accessToken, number).enqueue(new Callback<SubjectResponse>() {
             @Override
             public void onResponse(Call<SubjectResponse> call, Response<SubjectResponse> response) {
                 if(response.isSuccessful()){
@@ -46,9 +47,14 @@ public class SubjectActivity extends Activity {
 
             @Override
             public void onFailure(Call<SubjectResponse> call, Throwable t) {
-
             }
         });
+
+        if(number == 0){
+            binding.tvsubject.setText("정보없음");
+            binding.textview1.setText("정보없음");
+            binding.textview3.setText("정보없음");
+        }
 
         // X 이미지 클릭 리스너
         binding.ivNo.setOnClickListener(new View.OnClickListener() {

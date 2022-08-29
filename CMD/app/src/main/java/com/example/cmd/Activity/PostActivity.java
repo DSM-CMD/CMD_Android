@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
+import com.example.cmd.R;
 import com.example.cmd.Request.PostRequest;
 import com.example.cmd.databinding.ActivityPostBinding;
 
@@ -57,6 +58,7 @@ public class PostActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(PostActivity.this, "정상적으로 등록되었습니다!", Toast.LENGTH_SHORT).show();
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                     finish();
                 }
             }

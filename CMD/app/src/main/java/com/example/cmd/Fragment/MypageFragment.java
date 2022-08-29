@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cmd.Activity.InfoUpdateActivity;
 import com.example.cmd.Activity.SignInActivity;
+import com.example.cmd.R;
 import com.example.cmd.Response.MyInfoResponse;
 import com.example.cmd.databinding.FragmentMypageBinding;
 
@@ -40,6 +41,7 @@ public class MypageFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), InfoUpdateActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
             }
         });
@@ -59,6 +61,7 @@ public class MypageFragment extends Fragment {
                         SignInActivity.editor.putBoolean("Check", false).commit();
 
                         Intent intent = new Intent(getActivity(), SignInActivity.class);
+                        getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                         startActivity(intent);
                         getActivity().finish();
 
@@ -86,7 +89,7 @@ public class MypageFragment extends Fragment {
             @Override
             public void onResponse(Call<MyInfoResponse> call, Response<MyInfoResponse> response) {
                 if(response.isSuccessful()){
-                    binding.tvmyName.setText(response.body().getUsername());
+                    binding.tvmyName.setText(response.body().getName());
                     binding.tvmyId.setText(response.body().getUserId());
                     binding.tvmyNumber.setText(response.body().getNumber());
                     binding.tvmyBirth.setText(response.body().getBirthday());

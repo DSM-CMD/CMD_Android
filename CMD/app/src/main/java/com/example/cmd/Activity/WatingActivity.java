@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
+import com.example.cmd.R;
 import com.example.cmd.databinding.ActivityWatingBinding;
 
 public class WatingActivity extends AppCompatActivity {
@@ -40,6 +41,7 @@ public class WatingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 finish();
             }
         });

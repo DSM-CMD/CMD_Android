@@ -76,6 +76,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
 
@@ -105,7 +106,7 @@ public class SignInActivity extends AppCompatActivity {
                 public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                     if(response.isSuccessful()){
 
-                        accessToken = response.body().getAccessToken();
+                        accessToken = "Bearer " + response.body().getAccessToken();
 
                         if(binding.cbautlLogin.isChecked()){
                             editor.putBoolean("Check", true).commit();
@@ -117,6 +118,7 @@ public class SignInActivity extends AppCompatActivity {
                         Toast.makeText(SignInActivity.this, "로그인에 성공했습니다!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                         finish();
 
                     }
@@ -141,7 +143,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if(response.isSuccessful()){
 
-                    accessToken = response.body().getAccessToken();
+                    accessToken = "Bearer " + response.body().getAccessToken();
 
                     if(binding.cbautlLogin.isChecked()){
                         editor.putBoolean("Check", true).commit();
@@ -151,6 +153,7 @@ public class SignInActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), LobbyActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                     finish();
 
                     Toast.makeText(SignInActivity.this, "로그인에 성공했습니다!", Toast.LENGTH_SHORT).show();

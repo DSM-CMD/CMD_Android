@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.cmd.R;
 import com.example.cmd.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(getApplicationContext(), WatingActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 finish();
             }
         }, 2000);
