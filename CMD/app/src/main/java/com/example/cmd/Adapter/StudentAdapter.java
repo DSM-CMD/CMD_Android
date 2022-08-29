@@ -45,7 +45,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
 
     @Override
     public void onBindViewHolder(@NonNull StudentAdapter.StudentViewHolder holder, int position) {
-        holder.tvname.setText(list.get(position).getUsername());
+        holder.tvname.setText(list.get(position).getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

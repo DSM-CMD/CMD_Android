@@ -1,7 +1,7 @@
 package com.example.cmd.Response;
 
 public class MyInfoResponse {
-    private String username;
+    private String name;
     private String number;
     private String birthday;
     private String field;
@@ -9,7 +9,7 @@ public class MyInfoResponse {
     private String userId;
 
     public MyInfoResponse(String username, String number, String birthday, String field, String seatNumber, String userId) {
-        this.username = username;
+        this.name = username;
         this.number = number;
         this.birthday = birthday;
         this.field = field;
@@ -17,8 +17,8 @@ public class MyInfoResponse {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
     public String getNumber() {

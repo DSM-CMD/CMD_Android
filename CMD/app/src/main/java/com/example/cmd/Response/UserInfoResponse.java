@@ -1,22 +1,22 @@
 package com.example.cmd.Response;
 
 public class UserInfoResponse {
-    String username;
-    String number;
-    String birthday;
-    String field;
-    Long seatNumber;
+    private String name;
+    private String number;
+    private String birthday;
+    private String field;
+    private Long seatNumber;
 
-    public UserInfoResponse(String username, String number, String birthday, String field, Long seatNumber) {
-        this.username = username;
+    public UserInfoResponse(String name, String number, String birthday, String field, Long seatNumber) {
+        this.name = name;
         this.number = number;
         this.birthday = birthday;
         this.field = field;
         this.seatNumber = seatNumber;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
     public String getNumber() {
