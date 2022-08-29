@@ -15,6 +15,7 @@ import com.example.cmd.Activity.SubjectActivity;
 import com.example.cmd.Api.ApiProvider;
 import com.example.cmd.Api.ServerApi;
 import com.example.cmd.Activity.SignInActivity;
+import com.example.cmd.R;
 import com.example.cmd.Response.SubjectResponse;
 import com.example.cmd.Response.TimetableResponse;
 import com.example.cmd.databinding.FragmentTimetableBinding;
@@ -77,7 +78,8 @@ public class TimetableFragment extends Fragment {
 
                             setperiod();
                         }else if(response.code() == 500){
-                           notimetable();
+                            setperiod();
+                            notimetable();
                         }
                     }
 
@@ -97,7 +99,6 @@ public class TimetableFragment extends Fragment {
             public void onClick(View view) {
                 calendar.add(Calendar.DATE, 1);
                 String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
-                Log.d("Test", "right");
                 binding.tvdate.setText(format);
                 SignInActivity.serverApi.timetable(SignInActivity.accessToken, calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
                     @Override
@@ -118,6 +119,7 @@ public class TimetableFragment extends Fragment {
 
                             setperiod();
                         }else if(response.code() == 500){
+                            setperiod();
                             notimetable();
                         }
                     }
@@ -127,8 +129,6 @@ public class TimetableFragment extends Fragment {
 
                     }
                 });
-
-
             }
         });
 
@@ -151,36 +151,33 @@ public class TimetableFragment extends Fragment {
 
     // 시간표 조회 함수
     private void timetable(){
+        calendar.clear();
+        calendar = Calendar.getInstance();
         String format = new SimpleDateFormat("MM월 dd일 " + calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.KOREA) + "요일").format(calendar.getTime());
         binding.tvdate.setText(format);
         SignInActivity.serverApi.timetable(SignInActivity.accessToken, calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.US)).enqueue(new Callback<TimetableResponse>() {
             @Override
             public void onResponse(Call<TimetableResponse> call, Response<TimetableResponse> response) {
                 if(response.isSuccessful()){
+                    SignInActivity.editor.putBoolean("TimeTable", true).commit();
                     binding.tvperiod01.setText(response.body().getPeriod1st());
                     binding.tvperiod02.setText(response.body().getPeriod2nd());
                     binding.tvperiod03.setText(response.body().getPeriod3th());
                     binding.tvperiod04.setText(response.body().getPeriod4th());
+                    binding.tvlaunch.setText("점심시간");
                     binding.tvperiod05.setText(response.body().getPeriod5th());
                     binding.tvperiod06.setText(response.body().getPeriod6th());
                     binding.tvperiod07.setText(response.body().getPeriod7th());
                     binding.tvperiod08.setText(response.body().getPeriod8th());
+                    binding.tvdinner.setText("저녁시간");
                     binding.tvperiod09.setText(response.body().getPeriod9th());
                     binding.tvperiod10.setText(response.body().getPeriod10th());
 
                     setperiod();
                 }
                 else if(response.code() == 500){
-                    binding.tvperiod01.setText("시");
-                    binding.tvperiod02.setText("간");
-                    binding.tvperiod03.setText("표");
-                    binding.tvperiod04.setText("가");
-                    binding.tvperiod05.setText("없");
-                    binding.tvperiod06.setText("어");
-                    binding.tvperiod07.setText("용");
-                    binding.tvperiod08.setText("!");
-                    binding.tvperiod09.setText("!");
-                    binding.tvperiod10.setText("!");
+                    notimetable();
+                    setperiod();
                 }
             }
 
@@ -196,10 +193,12 @@ public class TimetableFragment extends Fragment {
         binding.tvperiod02.setText("간");
         binding.tvperiod03.setText("표");
         binding.tvperiod04.setText("가");
+        binding.tvlaunch.setText("점심시간");
         binding.tvperiod05.setText("없");
         binding.tvperiod06.setText("어");
         binding.tvperiod07.setText("용");
         binding.tvperiod08.setText("!");
+        binding.tvdinner.setText("저녁시간");
         binding.tvperiod09.setText("!");
         binding.tvperiod10.setText("!");
     }
@@ -227,6 +226,7 @@ public class TimetableFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SubjectActivity.class);
                 intent.putExtra("Number", number);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
         binding.cvperiod02.setOnClickListener(new View.OnClickListener() {
@@ -248,6 +248,7 @@ public class TimetableFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SubjectActivity.class);
                 intent.putExtra("Number", number);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
             }
         });
@@ -270,6 +271,7 @@ public class TimetableFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SubjectActivity.class);
                 intent.putExtra("Number", number);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
         binding.cvperiod04.setOnClickListener(new View.OnClickListener() {
@@ -291,13 +293,14 @@ public class TimetableFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SubjectActivity.class);
                 intent.putExtra("Number", number);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
         binding.cvperiod05.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int number = 0;
-                switch(binding.tvperiod01.getText().toString()) {
+                switch(binding.tvperiod05.getText().toString()) {
                     case "국어" : number = 1; break;
                     case "수학" : number = 2; break;
                     case "사회" : number = 3; break;
@@ -312,6 +315,7 @@ public class TimetableFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SubjectActivity.class);
                 intent.putExtra("Number", number);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
         binding.cvperiod06.setOnClickListener(new View.OnClickListener() {
@@ -334,6 +338,7 @@ public class TimetableFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), SubjectActivity.class);
                     intent.putExtra("Number", number);
                     startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 }
             }
         });
@@ -357,18 +362,10 @@ public class TimetableFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), SubjectActivity.class);
                     intent.putExtra("Number", number);
                     startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 }
             }
         });
     }
-
-
-
-
-
-
-
-
-
 
 }
