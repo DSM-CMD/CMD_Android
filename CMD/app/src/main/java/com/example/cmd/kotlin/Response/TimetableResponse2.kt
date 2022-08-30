@@ -1,4 +1,4 @@
-package com.example.cmd.Kotlin.Response
+package com.example.cmd.kotlin.Response
 
 data class TimetableResponse2(
     val day: String,

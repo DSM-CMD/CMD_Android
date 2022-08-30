@@ -1,16 +1,9 @@
-package com.example.cmd.Kotlin.Main
+package com.example.cmd.kotlin.Main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.viewpager2.R
 import androidx.viewpager2.widget.ViewPager2
-import com.example.cmd.Fragment.MypageFragment
-import com.example.cmd.Fragment.NoticeBoardFragment
-import com.example.cmd.Fragment.StudentInfoFragment
-import com.example.cmd.Fragment.TimetableFragment
 import com.example.cmd.databinding.ActivityLobbyBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

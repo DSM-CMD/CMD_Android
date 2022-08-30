@@ -1,20 +1,17 @@
-package com.example.cmd.Activity;
+package com.example.cmd.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
 import com.example.cmd.R;
-import com.example.cmd.Request.InfoUpdateRequest;
 import com.example.cmd.databinding.ActivityInfoUpdateBinding;
+import com.example.cmd.request.InfoUpdateRequest;
 
 import retrofit2.Call;
 import retrofit2.Callback;

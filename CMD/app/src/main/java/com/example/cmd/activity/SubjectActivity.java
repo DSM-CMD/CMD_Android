@@ -1,18 +1,13 @@
-package com.example.cmd.Activity;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.cmd.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
-import com.example.cmd.Response.SubjectResponse;
 import com.example.cmd.databinding.ActivitySubjectBinding;
+import com.example.cmd.response.SubjectResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

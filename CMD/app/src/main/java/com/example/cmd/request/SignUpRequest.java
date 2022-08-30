@@ -1,4 +1,4 @@
-package com.example.cmd.Request;
+package com.example.cmd.request;
 
 public class SignUpRequest {
     String userId;

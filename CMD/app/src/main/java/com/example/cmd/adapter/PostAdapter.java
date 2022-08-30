@@ -1,4 +1,4 @@
-package com.example.cmd.Adapter;
+package com.example.cmd.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cmd.R;
-import com.example.cmd.Response.UserPostResponse;
-
-import org.w3c.dom.Text;
+import com.example.cmd.response.UserPostResponse;
 
 import java.util.List;
 

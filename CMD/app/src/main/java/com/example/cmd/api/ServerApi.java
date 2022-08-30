@@ -1,21 +1,19 @@
-package com.example.cmd.Api;
+package com.example.cmd.api;
 
-import com.example.cmd.Request.InfoUpdateRequest;
-import com.example.cmd.Request.PostRequest;
-import com.example.cmd.Request.SignInRequest;
-import com.example.cmd.Request.SignUpRequest;
-import com.example.cmd.Response.MyInfoResponse;
-import com.example.cmd.Response.NoticeResponse;
-import com.example.cmd.Response.SignInResponse;
-import com.example.cmd.Response.StudentInfoResponse;
-import com.example.cmd.Response.SubjectResponse;
-import com.example.cmd.Response.TimetableResponse;
-import com.example.cmd.Response.UserInfoResponse;
-import com.example.cmd.Response.UserPostResponse;
+import com.example.cmd.request.InfoUpdateRequest;
+import com.example.cmd.request.PostRequest;
+import com.example.cmd.request.SignInRequest;
+import com.example.cmd.request.SignUpRequest;
+import com.example.cmd.response.MyInfoResponse;
+import com.example.cmd.response.NoticeResponse;
+import com.example.cmd.response.SignInResponse;
+import com.example.cmd.response.StudentInfoResponse;
+import com.example.cmd.response.SubjectResponse;
+import com.example.cmd.response.TimetableResponse;
+import com.example.cmd.response.UserInfoResponse;
+import com.example.cmd.response.UserPostResponse;
 
 import java.util.List;
-
-import javax.security.auth.Subject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

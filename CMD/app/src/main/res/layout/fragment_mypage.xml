@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#232323"
-    tools:context=".Fragment.TimetableFragment">
+    tools:context=".fragment.TimetableFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mycon"

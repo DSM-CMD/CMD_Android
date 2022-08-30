@@ -1,4 +1,4 @@
-package com.example.cmd.Kotlin.Fragment
+package com.example.cmd.kotlin.Fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

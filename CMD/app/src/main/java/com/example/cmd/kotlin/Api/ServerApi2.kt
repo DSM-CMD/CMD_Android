@@ -1,13 +1,11 @@
-package com.example.cmd.Kotlin.Api
+package com.example.cmd.kotlin.Api
 
-import com.example.cmd.Kotlin.Request.SignInRequest2
-import com.example.cmd.Kotlin.Request.SignUpRequest2
-import com.example.cmd.Kotlin.Response.NoticeResponse2
-import com.example.cmd.Kotlin.Response.SignInResponse2
-import com.example.cmd.Kotlin.Response.StudentInfoResponse2
-import com.example.cmd.Kotlin.Response.TimetableResponse2
-import com.example.cmd.Request.SignUpRequest
-import com.example.cmd.Response.NoticeResponse
+import com.example.cmd.kotlin.Request.SignInRequest2
+import com.example.cmd.kotlin.Request.SignUpRequest2
+import com.example.cmd.kotlin.Response.NoticeResponse2
+import com.example.cmd.kotlin.Response.SignInResponse2
+import com.example.cmd.kotlin.Response.StudentInfoResponse2
+import com.example.cmd.kotlin.Response.TimetableResponse2
 import retrofit2.Call
 import retrofit2.http.*
 

@@ -1,4 +1,4 @@
-package com.example.cmd.Activity;
+package com.example.cmd.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

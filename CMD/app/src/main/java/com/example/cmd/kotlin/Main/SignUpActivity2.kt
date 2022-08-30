@@ -1,4 +1,4 @@
-package com.example.cmd.Kotlin.Main
+package com.example.cmd.kotlin.Main
 
 import android.content.Intent
 import android.graphics.Color
@@ -7,10 +7,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import com.example.cmd.Api.ServerApi
-import com.example.cmd.Kotlin.Api.ApiProvider
-import com.example.cmd.Kotlin.Api.ServerApi2
-import com.example.cmd.Kotlin.Request.SignUpRequest2
+import com.example.cmd.kotlin.Api.ApiProvider
+import com.example.cmd.kotlin.Request.SignUpRequest2
 import com.example.cmd.databinding.ActivitySignupBinding
 import retrofit2.Call
 import retrofit2.Callback

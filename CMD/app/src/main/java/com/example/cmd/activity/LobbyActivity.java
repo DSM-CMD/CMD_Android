@@ -1,23 +1,22 @@
-package com.example.cmd.Activity;
+package com.example.cmd.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.cmd.Fragment.MypageFragment;
-import com.example.cmd.Fragment.NoticeBoardFragment;
-import com.example.cmd.Fragment.StudentInfoFragment;
-import com.example.cmd.Fragment.TimetableFragment;
-import com.example.cmd.R;
 import com.example.cmd.databinding.ActivityLobbyBinding;
+import com.example.cmd.fragment.MypageFragment;
+import com.example.cmd.fragment.NoticeBoardFragment;
+import com.example.cmd.fragment.StudentInfoFragment;
+import com.example.cmd.fragment.TimetableFragment;
+import com.example.cmd.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class LobbyActivity extends AppCompatActivity {

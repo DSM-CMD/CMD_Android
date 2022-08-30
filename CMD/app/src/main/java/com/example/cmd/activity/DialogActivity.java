@@ -1,16 +1,14 @@
-package com.example.cmd.Activity;
+package com.example.cmd.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
-import com.example.cmd.Response.UserInfoResponse;
 import com.example.cmd.databinding.ActivityDialogBinding;
+import com.example.cmd.response.UserInfoResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

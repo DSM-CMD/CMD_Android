@@ -1,4 +1,4 @@
-package com.example.cmd.Fragment;
+package com.example.cmd.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.example.cmd.Activity.SignInActivity;
-import com.example.cmd.Adapter.StudentAdapter;
-import com.example.cmd.Response.StudentInfoResponse;
+import com.example.cmd.activity.SignInActivity;
+import com.example.cmd.adapter.StudentAdapter;
 import com.example.cmd.databinding.FragmentStudentinfoBinding;
+import com.example.cmd.response.StudentInfoResponse;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,11 @@
-package com.example.cmd.Kotlin.Recyclerview
+package com.example.cmd.kotlin.Recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cmd.Kotlin.Response.StudentInfoResponse2
+import com.example.cmd.kotlin.Response.StudentInfoResponse2
 import com.example.cmd.R
 
 class StudentAdapter2(val list: ArrayList<StudentInfoResponse2>) : RecyclerView.Adapter<StudentAdapter2.StudentViewHolder2>() {

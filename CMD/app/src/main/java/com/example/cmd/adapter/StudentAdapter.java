@@ -1,4 +1,4 @@
-package com.example.cmd.Adapter;
+package com.example.cmd.adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,9 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cmd.Activity.DialogActivity;
+import com.example.cmd.activity.DialogActivity;
 import com.example.cmd.R;
-import com.example.cmd.Response.StudentInfoResponse;
+import com.example.cmd.response.StudentInfoResponse;
 
 import java.util.List;
 

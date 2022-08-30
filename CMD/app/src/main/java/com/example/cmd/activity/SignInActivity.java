@@ -1,4 +1,4 @@
-package com.example.cmd.Activity;
+package com.example.cmd.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,11 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
+import com.example.cmd.api.ApiProvider;
+import com.example.cmd.api.ServerApi;
 import com.example.cmd.R;
-import com.example.cmd.Request.SignInRequest;
-import com.example.cmd.Response.SignInResponse;
+import com.example.cmd.request.SignInRequest;
+import com.example.cmd.response.SignInResponse;
 import com.example.cmd.databinding.ActivitySigninBinding;
 
 import retrofit2.Call;

@@ -1,4 +1,4 @@
-package com.example.cmd.Kotlin.Main
+package com.example.cmd.kotlin.Main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

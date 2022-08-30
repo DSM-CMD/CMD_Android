@@ -1,5 +1,5 @@
 
-package com.example.cmd.Fragment;
+package com.example.cmd.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,14 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.cmd.Activity.PostActivity;
-import com.example.cmd.Activity.SignInActivity;
+import com.example.cmd.activity.PostActivity;
+import com.example.cmd.activity.SignInActivity;
 import com.example.cmd.R;
-import com.example.cmd.Adapter.NoticeAdapter;
-import com.example.cmd.Adapter.PostAdapter;
-import com.example.cmd.Response.NoticeResponse;
-import com.example.cmd.Response.UserPostResponse;
+import com.example.cmd.adapter.NoticeAdapter;
+import com.example.cmd.adapter.PostAdapter;
 import com.example.cmd.databinding.FragmentNoticeBoardBinding;
+import com.example.cmd.response.NoticeResponse;
+import com.example.cmd.response.UserPostResponse;
 
 import java.util.ArrayList;
 import java.util.List;

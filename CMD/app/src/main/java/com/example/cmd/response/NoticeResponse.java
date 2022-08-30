@@ -1,4 +1,4 @@
-package com.example.cmd.Response;
+package com.example.cmd.response;
 
 public class NoticeResponse {
     private String title;

@@ -1,11 +1,11 @@
-package com.example.cmd.Kotlin.Recyclerview
+package com.example.cmd.kotlin.Recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cmd.Kotlin.Response.NoticeResponse2
+import com.example.cmd.kotlin.Response.NoticeResponse2
 import com.example.cmd.R
 
 class NoticeAdapter2(val list: ArrayList<NoticeResponse2>) :

@@ -1,4 +1,4 @@
-package com.example.cmd.Activity;
+package com.example.cmd.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.cmd.R;
-import com.example.cmd.Request.SignUpRequest;
 import com.example.cmd.databinding.ActivitySignupBinding;
+import com.example.cmd.request.SignUpRequest;
 
 import retrofit2.Call;
 import retrofit2.Callback;

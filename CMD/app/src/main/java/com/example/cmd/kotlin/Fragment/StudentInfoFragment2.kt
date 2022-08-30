@@ -1,4 +1,4 @@
-package com.example.cmd.Kotlin.Fragment
+package com.example.cmd.kotlin.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.cmd.Kotlin.Api.ApiProvider
-import com.example.cmd.Kotlin.Main.SignInActivity2
-import com.example.cmd.Kotlin.Recyclerview.StudentAdapter2
-import com.example.cmd.Kotlin.Response.StudentInfoResponse2
-import com.example.cmd.Response.StudentInfoResponse
+import com.example.cmd.kotlin.Api.ApiProvider
+import com.example.cmd.kotlin.Main.SignInActivity2
+import com.example.cmd.kotlin.Recyclerview.StudentAdapter2
+import com.example.cmd.kotlin.Response.StudentInfoResponse2
 import com.example.cmd.databinding.FragmentStudentinfoBinding
 import retrofit2.Call
 import retrofit2.Callback

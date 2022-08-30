@@ -1,4 +1,4 @@
-package com.example.cmd.Kotlin.Api
+package com.example.cmd.kotlin.Api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

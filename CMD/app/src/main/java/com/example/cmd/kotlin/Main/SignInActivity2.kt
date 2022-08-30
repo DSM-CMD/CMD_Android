@@ -1,15 +1,14 @@
-package com.example.cmd.Kotlin.Main
+package com.example.cmd.kotlin.Main
 
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.cmd.Kotlin.Api.ApiProvider
-import com.example.cmd.Kotlin.Request.SignInRequest2
-import com.example.cmd.Kotlin.Response.SignInResponse2
+import com.example.cmd.kotlin.Api.ApiProvider
+import com.example.cmd.kotlin.Request.SignInRequest2
+import com.example.cmd.kotlin.Response.SignInResponse2
 import com.example.cmd.databinding.ActivitySigninBinding
-import com.example.cmd.databinding.ActivitySignupBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

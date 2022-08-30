@@ -1,12 +1,12 @@
-package com.example.cmd.Kotlin.Main
+package com.example.cmd.kotlin.Main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.cmd.Kotlin.Fragment.MypageFragment2
-import com.example.cmd.Kotlin.Fragment.NoticeBoardFragment2
-import com.example.cmd.Kotlin.Fragment.StudentInfoFragment2
-import com.example.cmd.Kotlin.Fragment.TimetableFragment2
+import com.example.cmd.kotlin.Fragment.MypageFragment2
+import com.example.cmd.kotlin.Fragment.NoticeBoardFragment2
+import com.example.cmd.kotlin.Fragment.StudentInfoFragment2
+import com.example.cmd.kotlin.Fragment.TimetableFragment2
 
 class ViewPagerAdapter (fragment : FragmentActivity) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 4

@@ -1,6 +1,4 @@
-package com.example.cmd.Response;
-
-import java.util.Collection;
+package com.example.cmd.response;
 
 public class TimetableResponse {
     private String day;

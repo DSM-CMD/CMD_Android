@@ -1,5 +1,5 @@
 
-package com.example.cmd.Fragment;
+package com.example.cmd.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,11 +12,11 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.cmd.Activity.InfoUpdateActivity;
-import com.example.cmd.Activity.SignInActivity;
+import com.example.cmd.activity.InfoUpdateActivity;
+import com.example.cmd.activity.SignInActivity;
 import com.example.cmd.R;
-import com.example.cmd.Response.MyInfoResponse;
 import com.example.cmd.databinding.FragmentMypageBinding;
+import com.example.cmd.response.MyInfoResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

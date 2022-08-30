@@ -1,28 +1,23 @@
-package com.example.cmd.Fragment;
+package com.example.cmd.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.cmd.Activity.SubjectActivity;
-import com.example.cmd.Api.ApiProvider;
-import com.example.cmd.Api.ServerApi;
-import com.example.cmd.Activity.SignInActivity;
+import com.example.cmd.activity.SubjectActivity;
+import com.example.cmd.activity.SignInActivity;
 import com.example.cmd.R;
-import com.example.cmd.Response.SubjectResponse;
-import com.example.cmd.Response.TimetableResponse;
 import com.example.cmd.databinding.FragmentTimetableBinding;
+import com.example.cmd.response.TimetableResponse;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import retrofit2.Call;
